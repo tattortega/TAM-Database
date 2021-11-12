@@ -1,9 +1,13 @@
 package com.tamdatabase.tamapi.models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Usuarios")
-public class Usuario {
+public class Usuarios {
+
+    @Id
+    private String id;
     private Integer key_usuario;
     private String nombres;
     private String apellidos;
@@ -13,8 +17,9 @@ public class Usuario {
     private String contraseña;
 
 
-    public Usuario(int key_usuario, String nombres, String apellidos, String correo, int estado, int roles_id,
+    public Usuarios(String id,Integer key_usuario, String nombres, String apellidos, String correo, Integer estado, Integer roles_id,
             String contraseña) {
+        this.id= id;
         this.key_usuario = key_usuario;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -24,8 +29,12 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    public Usuario(){
+    public Usuarios(){
 
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setKey_usuario(Integer key_usuario) {
@@ -54,6 +63,10 @@ public class Usuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public Integer getKey_usuario() {

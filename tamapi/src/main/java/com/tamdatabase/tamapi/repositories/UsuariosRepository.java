@@ -1,5 +1,5 @@
 package com.tamdatabase.tamapi.repositories;
 
-public class UsuarioRepository {
+public class UsuariosRepository {
     
 }
