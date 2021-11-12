@@ -1,5 +1,11 @@
 package com.tamdatabase.tamapi.repositories;
 
-public class UsuariosRepository {
+import com.tamdatabase.tamapi.models.Usuarios;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UsuariosRepository extends MongoRepository<Usuarios,String> {
     
 }
