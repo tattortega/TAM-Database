@@ -51,7 +51,7 @@ public class UsuariosController {
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/usuarios")
+    @DeleteMapping("/usuarios/{id}")
     ResponseEntity<Map<String,String>> delete(@PathVariable String id){
         Boolean existeUsuarios = this._usuariosService.existById(id);
         Map<String,String> response = new HashMap<>();
@@ -60,7 +60,6 @@ public class UsuariosController {
             return ResponseEntity.ok(response);
         }
         this._usuariosService.deleteById(id);
-        
         response.put("mensaje","El usuario se ha eliminado correctamente");
         return ResponseEntity.ok(response);
     }
