@@ -13,12 +13,14 @@ public class Usuarios {
     private String apellidos;
     private String correo;
     private Integer estado;
-    private Integer roles_id;
+    private String roles_id;
+    private String usuario;
     private String contraseña;
+    private String token;
 
 
-    public Usuarios(String id,Integer key_usuario, String nombres, String apellidos, String correo, Integer estado, Integer roles_id,
-            String contraseña) {
+    public Usuarios(String id,Integer key_usuario, String nombres, String apellidos, String correo, Integer estado, String roles_id,
+            String usuario,String contraseña,String token) {
         this.id= id;
         this.key_usuario = key_usuario;
         this.nombres = nombres;
@@ -26,7 +28,9 @@ public class Usuarios {
         this.correo = correo;
         this.estado = estado;
         this.roles_id = roles_id;
+        this.usuario = usuario;
         this.contraseña = contraseña;
+        this.token = token;
     }
 
     public Usuarios(){
@@ -57,7 +61,7 @@ public class Usuarios {
         this.estado = estado;
     }
 
-    public void setRoles_id(Integer roles_id) {
+    public void setRoles_id(String roles_id) {
         this.roles_id = roles_id;
     }
 
@@ -89,7 +93,7 @@ public class Usuarios {
         return estado;
     }
 
-    public Integer getRoles_id() {
+    public String getRoles_id() {
         return roles_id;
     }
 
@@ -97,5 +101,23 @@ public class Usuarios {
         return contraseña;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    
+    
+    
 }
