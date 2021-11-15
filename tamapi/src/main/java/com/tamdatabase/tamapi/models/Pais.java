@@ -7,23 +7,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Pais {
     
     @Id
-    private String id;
+    private String id_pais;
     private String nombre;
     
     public Pais() {
     }
 
-    public Pais(String id, String nombre) {
-        this.id = id;
+    public Pais(String id_pais, String nombre) {
+        this.id_pais = id_pais;
         this.nombre = nombre;
     }
 
     public String getId() {
-        return id;
+        return id_pais;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String id_pais) {
+        this.id_pais = id_pais;
     }
 
     public String getNombre() {
