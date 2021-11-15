@@ -3,6 +3,7 @@ package com.tamdatabase.tamapi.controllers;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import com.tamdatabase.tamapi.models.Roles;
 import com.tamdatabase.tamapi.services.RolesService;
@@ -32,6 +33,11 @@ public class RolesController {
     public List<Roles> findAll()
     {
         return this._rolesService.findAll();
+    }
+
+    @GetMapping("/roles/{id}")
+    public Optional<Roles> getRol(@PathVariable("id") String id) {
+        return this._rolesService.findById(id);
     }
 
     @PostMapping("/roles")

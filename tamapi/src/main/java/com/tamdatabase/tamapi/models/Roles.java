@@ -8,12 +8,14 @@ public class Roles {
 
     @Id
     private String id;
+    private String roles_id;
     private String nombre_rol;
     private String descripción;
 
 
-    public Roles(String id, String nombres_rol, String descripción) {
-        this.id= id;
+    public Roles(String id, String roles_id, String nombres_rol, String descripción) {
+        this.id=id;
+        this.roles_id= roles_id;
         this.nombre_rol = nombres_rol;
         this.descripción = descripción;
     }
@@ -21,9 +23,11 @@ public class Roles {
     public Roles(){
 
     }
-
     public void setId(String id) {
         this.id = id;
+    }
+    public void setRoles_id(String roles_id) {
+        this.roles_id = roles_id;
     }
     public void setNombre_rol(String nombre_rol) {
         this.nombre_rol = nombre_rol;
@@ -33,6 +37,9 @@ public class Roles {
     }
     public String getId() {
         return id;
+    }
+    public String getRoles_id() {
+        return roles_id;
     }
     public String getNombre_rol() {
         return nombre_rol;
