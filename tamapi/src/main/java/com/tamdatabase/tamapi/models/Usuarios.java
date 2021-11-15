@@ -14,11 +14,12 @@ public class Usuarios {
     private String correo;
     private Integer estado;
     private Integer roles_id;
+    private String usuario;
     private String contraseña;
 
 
     public Usuarios(String id,Integer key_usuario, String nombres, String apellidos, String correo, Integer estado, Integer roles_id,
-            String contraseña) {
+            String usuario,String contraseña) {
         this.id= id;
         this.key_usuario = key_usuario;
         this.nombres = nombres;
@@ -26,6 +27,7 @@ public class Usuarios {
         this.correo = correo;
         this.estado = estado;
         this.roles_id = roles_id;
+        this.usuario = usuario;
         this.contraseña = contraseña;
     }
 
@@ -61,6 +63,10 @@ public class Usuarios {
         this.roles_id = roles_id;
     }
 
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
@@ -91,6 +97,10 @@ public class Usuarios {
 
     public Integer getRoles_id() {
         return roles_id;
+    }
+
+    public String getUsuario() {
+        return usuario;
     }
 
     public String getContraseña() {

@@ -39,4 +39,8 @@ public class UsuariosService {
     public Boolean existById(String id){
         return this._usuariosRepository.existsById(id);
     }
+
+    public Usuarios findByUsuario(String usuario){
+        return this._usuariosRepository.findByUsuario(usuario).orElse(new Usuarios());
+    }
 }

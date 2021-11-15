@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.tamdatabase.tamapi.models.Usuarios;
 import com.tamdatabase.tamapi.services.UsuariosService;
+import com.tamdatabase.tamapi.utils.BCrypt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,11 +37,17 @@ public class UsuariosController {
 
     @PostMapping("/usuarios")
     ResponseEntity<Map<String,String>> save(@RequestBody Usuarios usuarios){
-        this._usuariosService.save(usuarios);
+        usuarios.setContraseña(BCrypt.hashpw(usuarios.getContraseña(), BCrypt.gensalt()));
+        Usuarios u = this._usuariosService.findByUsuario(usuarios.getUsuario());
         Map<String,String> response = new HashMap<>();
-        response.put("mensaje","El usuario se ha registrado correctamente");
+        System.out.println(u.getId());
+        if(u.getId() == null){
+            this._usuariosService.save(usuarios);
+            response.put("mensaje","El usuario se ha registrado correctamente");
+        }else{
+            response.put("mensaje","El usuario ya se encuentra registrado");
+        }
         return ResponseEntity.ok(response);
-
     }
 
     @PutMapping("/usuarios")
