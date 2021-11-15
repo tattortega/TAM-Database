@@ -13,10 +13,10 @@ public class Roles {
     private String descripción;
 
 
-    public Roles(String id, String roles_id, String nombres_rol, String descripción) {
+    public Roles(String id, String roles_id, String nombre_rol, String descripción) {
         this.id=id;
         this.roles_id= roles_id;
-        this.nombre_rol = nombres_rol;
+        this.nombre_rol = nombre_rol;
         this.descripción = descripción;
     }
 
