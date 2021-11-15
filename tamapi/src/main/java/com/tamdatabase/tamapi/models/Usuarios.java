@@ -13,12 +13,12 @@ public class Usuarios {
     private String apellidos;
     private String correo;
     private Integer estado;
-    private Integer roles_id;
+    private String roles_id;
     private String usuario;
     private String contraseña;
 
 
-    public Usuarios(String id,Integer key_usuario, String nombres, String apellidos, String correo, Integer estado, Integer roles_id,
+    public Usuarios(String id,Integer key_usuario, String nombres, String apellidos, String correo, Integer estado, String roles_id,
             String usuario,String contraseña) {
         this.id= id;
         this.key_usuario = key_usuario;
@@ -59,7 +59,7 @@ public class Usuarios {
         this.estado = estado;
     }
 
-    public void setRoles_id(Integer roles_id) {
+    public void setRoles_id(String roles_id) {
         this.roles_id = roles_id;
     }
 
@@ -95,7 +95,7 @@ public class Usuarios {
         return estado;
     }
 
-    public Integer getRoles_id() {
+    public String getRoles_id() {
         return roles_id;
     }
 
