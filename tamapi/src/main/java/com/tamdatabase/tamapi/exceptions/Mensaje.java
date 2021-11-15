@@ -25,4 +25,3 @@ public class Mensaje {
         return type;
     }
 }
-
