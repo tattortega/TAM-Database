@@ -3,7 +3,7 @@ package com.tamdatabase.tamapi.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Usuarios")
+@Document(collection = "usuarios")
 public class Usuarios {
 
     @Id
