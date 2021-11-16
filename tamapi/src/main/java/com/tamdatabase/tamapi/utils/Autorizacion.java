@@ -60,7 +60,6 @@ public class Autorizacion implements Filter {
                 String body = "{\"Autorizacion\":\" No tienes autorizacion\"}";
                 response.getWriter().write(body);
             }
-
         }
     }
 }
