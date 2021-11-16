@@ -65,10 +65,6 @@ public class Usuarios {
         this.roles_id = roles_id;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
@@ -101,12 +97,16 @@ public class Usuarios {
         return roles_id;
     }
 
+    public String getContraseña() {
+        return contraseña;
+    }
+
     public String getUsuario() {
         return usuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getToken() {
@@ -117,5 +117,7 @@ public class Usuarios {
         this.token = token;
     }
 
+    
+    
     
 }

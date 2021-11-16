@@ -24,7 +24,7 @@ public class Autorizacion implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String url = httpServletRequest.getRequestURI();
         System.out.println(url);
-        if(url.contains("/api/v1/usuarios/login")){
+        if(url.contains("/api/usuarios/login")){
             System.out.println("Estoy accediendo a la ruta de usuarios");
             chain.doFilter(request, response);
         }else{
