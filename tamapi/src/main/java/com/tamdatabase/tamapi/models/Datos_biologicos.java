@@ -8,13 +8,12 @@ public class Datos_biologicos {
     
     @Id
     private String id;
-    private Integer key_datos_biologicos;
     private Integer key_usuario;
     private Float latitud;
-    private Float longitug;
+    private Float longitud;
     private String localidad;
     private Float elevacion;
-    private Integer key_pais;
+    private String id_pais;
     private String codigo_genbank;
     private String marcador_molecular;
     private String orden;
@@ -26,18 +25,17 @@ public class Datos_biologicos {
     public Datos_biologicos() {
     }
 
-    public Datos_biologicos(String id, Integer key_datos_biologicos, Integer key_usuario, Float latitud, Float longitug,
-            String localidad, Float elevacion, Integer key_pais, String codigo_genbank, String marcador_molecular,
+    public Datos_biologicos(String id, Integer key_usuario, Float latitud, Float longitud,
+            String localidad, Float elevacion, String id_pais, String codigo_genbank, String marcador_molecular,
             String orden, String especie, String familia, String genero_parasito, String bibliographic_ref) {
 
         this.id = id;
-        this.key_datos_biologicos = key_datos_biologicos;
         this.key_usuario = key_usuario;
         this.latitud = latitud;
-        this.longitug = longitug;
+        this.longitud = longitud;
         this.localidad = localidad;
         this.elevacion = elevacion;
-        this.key_pais = key_pais;
+        this.id_pais = id_pais;
         this.codigo_genbank = codigo_genbank;
         this.marcador_molecular = marcador_molecular;
         this.orden = orden;
@@ -52,12 +50,6 @@ public class Datos_biologicos {
     public void setId(String id) {
         this.id = id;
     }
-    public Integer getKey_datos_biologicos() {
-        return key_datos_biologicos;
-    }
-    public void setKey_datos_biologicos(Integer key_datos_biologicos) {
-        this.key_datos_biologicos = key_datos_biologicos;
-    }
     public Integer getKey_usuario() {
         return key_usuario;
     }
@@ -70,11 +62,11 @@ public class Datos_biologicos {
     public void setLatitud(Float latitud) {
         this.latitud = latitud;
     }
-    public Float getLongitug() {
-        return longitug;
+    public Float getLongitud() {
+        return longitud;
     }
-    public void setLongitug(Float longitug) {
-        this.longitug = longitug;
+    public void setLongitud(Float longitud) {
+        this.longitud = longitud;
     }
     public String getLocalidad() {
         return localidad;
@@ -88,11 +80,11 @@ public class Datos_biologicos {
     public void setElevacion(Float elevacion) {
         this.elevacion = elevacion;
     }
-    public Integer getKey_pais() {
-        return key_pais;
+    public String getId_pais() {
+        return id_pais;
     }
-    public void setKey_pais(Integer key_pais) {
-        this.key_pais = key_pais;
+    public void setId_pais(String id_pais) {
+        this.id_pais = id_pais;
     }
     public String getCodigo_genbank() {
         return codigo_genbank;

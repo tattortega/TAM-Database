@@ -86,6 +86,7 @@ public class UsuariosController {
 
     @PutMapping("/usuarios")
     ResponseEntity<Map<String,String>> update(@RequestBody Usuarios usuarios){
+        usuarios.setContraseña(BCrypt.hashpw(usuarios.getContraseña(), BCrypt.gensalt()));
         this._usuariosService.save(usuarios);
         Map<String,String> response = new HashMap<>();
         response.put("mensaje","El usuario se ha actualizado correctamente");
