@@ -16,10 +16,11 @@ public class Usuarios {
     private String roles_id;
     private String usuario;
     private String contraseña;
+    private String token;
 
 
     public Usuarios(String id,Integer key_usuario, String nombres, String apellidos, String correo, Integer estado, String roles_id,
-            String usuario,String contraseña) {
+            String usuario,String contraseña,String token) {
         this.id= id;
         this.key_usuario = key_usuario;
         this.nombres = nombres;
@@ -29,6 +30,7 @@ public class Usuarios {
         this.roles_id = roles_id;
         this.usuario = usuario;
         this.contraseña = contraseña;
+        this.token = token;
     }
 
     public Usuarios(){
@@ -107,5 +109,13 @@ public class Usuarios {
         return contraseña;
     }
 
+    public String getToken() {
+        return token;
+    }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    
 }

@@ -1,11 +1,14 @@
 package com.tamdatabase.tamapi.controllers;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.tamdatabase.tamapi.exceptions.CustomException;
 import com.tamdatabase.tamapi.models.Usuarios;
 import com.tamdatabase.tamapi.services.UsuariosService;
+import com.tamdatabase.tamapi.utils.Autorizacion;
 import com.tamdatabase.tamapi.utils.BCrypt;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
 @RequestMapping("/api")
@@ -48,6 +54,34 @@ public class UsuariosController {
             response.put("mensaje","El usuario ya se encuentra registrado");
         }
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/usuarios/login")
+    ResponseEntity<Usuarios> login(@RequestBody Usuarios usuario){
+        Usuarios u = this._usuariosService.findByUsuario(usuario.getUsuario());
+        if(u.getUsuario() == null){
+            throw new CustomException("Usuario o contraseña es incorrecto");
+        }
+        if(!BCrypt.checkpw(usuario.getContraseña(), u.getContraseña())){
+            throw new CustomException("Usuario o contraseña es incorrecto");
+        }
+        String token = "";
+        Long tiempo = System.currentTimeMillis();
+        if(u.getId() != ""){
+             token =   Jwts.builder()
+                    .signWith(SignatureAlgorithm.HS256, Autorizacion.key)
+                    .setSubject(u.getNombres())
+                    .setIssuedAt(new Date(tiempo))
+                    .setExpiration(new Date(tiempo + 900000))
+                    .claim("username", u.getUsuario())
+                    .claim("correo", u.getCorreo())
+                    .claim("rol", u.getRoles_id())
+                    .compact();
+        }
+
+        u.setToken(token);        
+        return ResponseEntity.ok(u);
+
     }
 
     @PutMapping("/usuarios")
