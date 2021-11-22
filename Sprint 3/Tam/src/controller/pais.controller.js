@@ -1,7 +1,7 @@
 const paisCtrl = {};
 const Pais = require('../models/pais.model');
 
-paisCtrl.getPais = async (req,res)=>{
+paisCtrl.getPaises = async (req,res)=>{
     try {
         const pais = await Pais.find({});
         res.json(pais);
