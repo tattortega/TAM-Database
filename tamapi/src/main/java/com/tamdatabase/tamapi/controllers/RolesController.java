@@ -40,6 +40,11 @@ public class RolesController {
         return this._rolesService.findById(id);
     }
 
+    @GetMapping("/roles/contar/")
+    public Long contar(){
+        return this._rolesService.contar();
+    }
+
     @PostMapping("/roles")
     ResponseEntity<Map<String,String>> save(@RequestBody Roles roles){
         this._rolesService.save(roles);
