@@ -6,6 +6,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //Rutas
-app.use(require('./src/routes/main.route'));
-app.use(require('./src/routes/datosbiologicos.route'))
+app.use(require('./src/routes/datosbiologicos.route'));
+
 module.exports = app;

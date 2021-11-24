@@ -1,7 +1,13 @@
 const datosbiologicosCtrl = {};
+const DatosBiologicos = require('../model/datosbiologicos.model');
 
 datosbiologicosCtrl.getDatos_biologicos = async (req,res)=>{
-   res.send("GetDatos_biologicos");
+    try {
+        const datosBiologicos = await DatosBiologicos.find({});
+        res.json(datosBiologicos);
+    } catch (error) {
+        console.log(error);
+    } 
 };
 
 datosbiologicosCtrl.getDato_biologico = async (req,res)=>{
