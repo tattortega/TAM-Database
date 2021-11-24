@@ -106,7 +106,7 @@ usuarioCtrl.buscarUsuarioEstado = async(req,res)=>{
     } catch (error) {
         
         return res.status(400).json({
-            mensaje:'Ucurrió un error',
+            mensaje:'Ocurrió un error',
             error
         })
     }
