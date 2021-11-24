@@ -108,7 +108,7 @@ datosCtrl.buscarDatoLongitud = async(req,res)=>{
 }
 
 datosCtrl.buscarDatoElevacion = async(req,res)=>{
-    const elevación= req.params.criterio;
+    const elevacion= req.params.criterio;
 
     try {
         const respuesta = await Datos.find({elevacion:elevacion})
