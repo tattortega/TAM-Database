@@ -32,6 +32,14 @@ public class RolesService {
         return this._rolesRepository.findById(id);
     }
 
+    /*public Optional<Roles> findOne(String roles_id){
+        return this._rolesRepository.findOne({"roles_id":roles_id});
+    }*/
+
+    public long contar(){
+        return this._rolesRepository.count();
+    }
+
     public void deleteById(String id){
         this._rolesRepository.deleteById(id);
     }

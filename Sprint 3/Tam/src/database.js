@@ -5,7 +5,7 @@ mongoose.connect(URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
-.then(db=> console.log('Estoy conectada a la bd:',db.connection.name))
+.then(db=> console.log('Estoy conectado a la bd:',db.connection.name))
 .catch(error=> console.log(error))
 
 module.exports = mongoose
