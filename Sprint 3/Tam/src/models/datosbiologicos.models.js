@@ -15,6 +15,7 @@ const Datos_biologicosSchema = new Schema({
     familia: {type:String, required:true},
     genero_parasito: {type:String, required:true},
     bibliographic_ref: {type:String, required:true},
+    created_at: {type: Date, default: Date.now}
 })
 
 //exportar el modelo
