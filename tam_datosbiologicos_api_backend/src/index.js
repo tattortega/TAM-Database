@@ -13,7 +13,7 @@ app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
 app.use(cors({origen: '*'}))
 
-app.use('/datos_biologicos',require('./routes/datosbiologicos.routes'))
+app.use('/datos_biologicos',require('./routes/datosbiologicos.route'))
 
 app.listen(app.get('Port'),()=>{
     console.log('Servidor está escuchando por el puerto',app.get('Port'))
