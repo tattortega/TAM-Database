@@ -6,7 +6,7 @@ router.post('/crearDatosBiologicos',DatosBiologicosCtrl.crear)
 router.get('/consultarDatosBiologicos',DatosBiologicosCtrl.buscar_todos)
 router.get('/consultarDatosBiologicosID/:id',DatosBiologicosCtrl.buscar_por_id)
 router.delete('/eliminarDatosBiologicos/:id',DatosBiologicosCtrl.eliminar)
-router.get('/actualizarDatosBiologicos/:id',DatosBiologicosCtrl.actualizar)
+router.put('/actualizarDatosBiologicos/:id',DatosBiologicosCtrl.actualizar)
 
 
 
