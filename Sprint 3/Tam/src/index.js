@@ -15,6 +15,7 @@ app.use(bodyparser.json())
 app.use(cors({origen:'*'}))
 
 app.use('/usuario',require('./routes/Usuario.routes'))
+app.use('/datos_biologicos',require('./routes/datosbiologicos.route'))
 
 app.listen(app.get('Port'),()=>{
     console.log('Servidor corriendo y escuchando por el puerto', app.get('Port'))
