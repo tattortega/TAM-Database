@@ -1,5 +1,5 @@
 const usuarioCtrl={}
-const Usuario = require('../models/Usuario.model')
+const Usuario = require('../models/usuario.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -106,7 +106,7 @@ usuarioCtrl.buscarUsuarioEstado = async(req,res)=>{
     } catch (error) {
         
         return res.status(400).json({
-            mensaje:'Ucurrió un error',
+            mensaje:'Ocurrió un error',
             error
         })
     }

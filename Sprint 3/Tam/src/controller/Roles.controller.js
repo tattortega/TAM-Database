@@ -1,5 +1,5 @@
 const rolesCtrl={}
-const Roles = require('../models/Roles.model')
+const Roles = require('../models/roles.model')
 
 rolesCtrl.crear = async(req,res)=>{
     const {roles_id, nombre_rol, descripción} = req.body
