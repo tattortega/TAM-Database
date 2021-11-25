@@ -14,9 +14,9 @@ app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
 app.use(cors({origen:'*'}))
 
-app.use(require('./routes/Usuario.route'))
+app.use('/usuario',require('./routes/Usuario.route'))
 app.use(require('./routes/soporte.route'))
-app.use(require('./routes/pais.route'))
+//app.use(require('./routes/pais.route'))
 
 
 app.listen(app.get('Port'),()=>{
