@@ -3,6 +3,7 @@ const Usuario = require('../models/usuario.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+//Crear usuario
 usuarioCtrl.crear = async(req,res)=>{
     const {nombres,apellidos,correo,estado,roles_id,usuario,contraseña} = req.body
     const NuevoUsuario = new Usuario({
@@ -36,6 +37,7 @@ usuarioCtrl.crear = async(req,res)=>{
     }
 }
 
+//Validar inicio de sesion
 usuarioCtrl.login = async(req,res)=>{
     const {correo,contraseña}=req.body
     const usuario = await Usuario.findOne({correo:correo})
@@ -65,7 +67,7 @@ usuarioCtrl.login = async(req,res)=>{
     }
 }
 
-//Buscar usuarios
+//Buscar todos los usuarios
 usuarioCtrl.listar= async(req,res)=>{
     const respuesta = await Usuario.find()
     res.json(respuesta)
@@ -73,7 +75,7 @@ usuarioCtrl.listar= async(req,res)=>{
 
 //Buscar usuario por Id
 usuarioCtrl.listarId= async(req,res)=>{
-    const id = req.params.id
+    const id = req.params._id
     const respuesta = await Usuario.findById({_id: id})
     res.json(respuesta)
 }
@@ -81,24 +83,36 @@ usuarioCtrl.listarId= async(req,res)=>{
 //Eliminar usuario
 usuarioCtrl.eliminar= async (req,res)=>{
     const id = req.params.id
-    await Usuario.findByIdAndRemove({_id:id})
-    res.json({
-        mensaje: 'Usuario eliminado'
-    })
+    const respuesta = await Usuario.findByIdAndRemove({_id:id})
+    if(respuesta==null){
+        res.json({
+            mensaje: 'El usuario no se encuentra en la base de datos'
+        })
+    }else{
+        res.json({
+            mensaje: 'Usuario eliminado'
+        })
+    }
 }
 
 //Actualizar usuario
 usuarioCtrl.actualizar= async (req,res)=>{
     const id = req.params.id
-    await Usuario.findByIdAndUpdate({_id:id}, req.body)
-    res.json({
-        mensaje: 'Usuario actualizado'
-    })
+    const respuesta = await Usuario.findByIdAndUpdate({_id:id}, req.body)
+    if(respuesta==null){
+        res.json({
+            mensaje: 'El usuario no se encuentra en la base de datos'
+        })
+    }else{
+        res.json({
+            mensaje: 'Usuario eliminado'
+        })
+    }
 }
 
-//Buscar según un criterio (filtrar)
+//Consultar por estado
 usuarioCtrl.buscarUsuarioEstado = async(req,res)=>{
-    const estado= req.params.criterio;
+    const estado= req.params.estado;
 
     try {
         const respuesta = await Usuario.find({estado:estado})
@@ -111,6 +125,81 @@ usuarioCtrl.buscarUsuarioEstado = async(req,res)=>{
         })
     }
 }
+//Consultar por nombre
+usuarioCtrl.buscarNombre = async(req,res)=>{
+    const nombres= req.params.nombres;
+    try {
+        const respuesta = await DatosBiologicos.find({nombres:nombres})
+        if(respuesta==''){
+            res.json({
+                mensaje: 'La busqueda no se encuentra en la base de datos'
+            })
+        }else{res.json(respuesta)  }
+             
+    } catch (error) {       
+        return res.status(400).json({
+            mensaje:'Ocurrió un error',
+            error
+        })
+    }
+}
+//Consultar por apellido
+usuarioCtrl.buscarApellido = async(req,res)=>{
+    const apellidos= req.params.apellidos;
+    try {
+        const respuesta = await DatosBiologicos.find({apellidos:apellidos})
+        if(respuesta==''){
+            res.json({
+                mensaje: 'La busqueda no se encuentra en la base de datos'
+            })
+        }else{res.json(respuesta)  }
+             
+    } catch (error) {       
+        return res.status(400).json({
+            mensaje:'Ocurrió un error',
+            error
+        })
+    }
+}
+
+//Consultar por correo
+usuarioCtrl.buscarCorreo = async(req,res)=>{
+    const correo= req.params.correo;
+    try {
+        const respuesta = await DatosBiologicos.find({correo:correo})
+        if(respuesta==''){
+            res.json({
+                mensaje: 'La busqueda no se encuentra en la base de datos'
+            })
+        }else{res.json(respuesta)  }
+             
+    } catch (error) {       
+        return res.status(400).json({
+            mensaje:'Ocurrió un error',
+            error
+        })
+    }
+}
+
+//Consultar por usuario
+usuarioCtrl.buscarUsuario = async(req,res)=>{
+    const usuario= req.params.usuario;
+    try {
+        const respuesta = await DatosBiologicos.find({usuario:usuario})
+        if(respuesta==''){
+            res.json({
+                mensaje: 'La busqueda no se encuentra en la base de datos'
+            })
+        }else{res.json(respuesta)  }
+             
+    } catch (error) {       
+        return res.status(400).json({
+            mensaje:'Ocurrió un error',
+            error
+        })
+    }
+}
+
 
 
 module.exports = usuarioCtrl

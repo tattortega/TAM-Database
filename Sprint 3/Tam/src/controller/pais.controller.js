@@ -1,6 +1,7 @@
 const paisCtrl = {};
 const Pais = require('../models/pais.model');
 
+//Consultar todos los paises
 paisCtrl.getPaises = async (req,res)=>{
     try {
         const pais = await Pais.find({});
@@ -10,6 +11,7 @@ paisCtrl.getPaises = async (req,res)=>{
     } 
 };
 
+//Consultar pais por id
 paisCtrl.getPais = async (req,res)=>{ 
     try {
         const pais = await Pais.find({id_pais:req.params.id_pais});
@@ -19,6 +21,7 @@ paisCtrl.getPais = async (req,res)=>{
     } 
 };
 
+//Crear pais
 paisCtrl.createPais = async (req,res)=>{ 
     try {
         const paisTemp = {
@@ -34,6 +37,7 @@ paisCtrl.createPais = async (req,res)=>{
     } 
 };
 
+//Actualizar pais
 paisCtrl.editPais = async (req,res)=>{
     try {
         const paisTemp = {
@@ -48,6 +52,7 @@ paisCtrl.editPais = async (req,res)=>{
     } 
 };
 
+//Eliminar pais
 paisCtrl.deletePais = async (req,res)=>{
     try {
         await Pais.deleteOne({id_pais:req.params.id_pais});

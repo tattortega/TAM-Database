@@ -1,6 +1,7 @@
 const soporteCtrl = {};
 const Soporte = require('../models/soporte.model');
 
+//Consultar todos los reportes
 soporteCtrl.getSoportes = async (req,res)=>{
     try {
         const soporte = await Soporte.find({});
@@ -10,6 +11,7 @@ soporteCtrl.getSoportes = async (req,res)=>{
     } 
 };
 
+//Consultar soporte por id
 soporteCtrl.getSoporte = async (req,res)=>{ 
     try {
         const soporte = await Soporte.find({_id:req.params._id});
@@ -19,6 +21,7 @@ soporteCtrl.getSoporte = async (req,res)=>{
     } 
 };
 
+//Crear soporte
 soporteCtrl.createSoporte = async (req,res)=>{ 
     try {
         const soporteTemp = {
@@ -36,6 +39,7 @@ soporteCtrl.createSoporte = async (req,res)=>{
     } 
 };
 
+//Actualizar soporte
 soporteCtrl.editSoporte = async (req,res)=>{
     try {
         const soporteTemp = {
@@ -53,6 +57,7 @@ soporteCtrl.editSoporte = async (req,res)=>{
     } 
 };
 
+//Eliminar soporte
 soporteCtrl.deleteSoporte = async (req,res)=>{
     try {
         await Soporte.deleteOne({_id:req.params._id});
