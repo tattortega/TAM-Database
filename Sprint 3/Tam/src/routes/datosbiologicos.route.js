@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router()
-const DatosBiologicosCtrl = require('../controller/datosbiologicos.controller.js')
+const DatosBiologicosCtrl = require('../controller/datosBiologicos.controller.js')
 
 router.get('/DatosBiologicos',DatosBiologicosCtrl.buscar_todos)
 router.get('/DatoBiologico/id/:id',DatosBiologicosCtrl.buscar_por_id)

@@ -1,5 +1,5 @@
 const DatosBiologicosCtrl={}
-const DatosBiologicos = require('../models/datosbiologicos.models.js')
+const DatosBiologicos = require('../models/datosBiologicos.models.js')
 
 DatosBiologicosCtrl.crear = async(req,res)=>{
 
@@ -302,7 +302,7 @@ DatosBiologicosCtrl.actualizar = async(req,res)=>{
 
 //Eliminar por id
 DatosBiologicosCtrl.eliminar = async(req,res)=>{
-    const id = req.params.id
+    const id = req.params._id
     const respuesta = await DatosBiologicos.findByIdAndRemove({_id: id})
     res.json({
         mensaje: 'Datos biológicos eliminados'

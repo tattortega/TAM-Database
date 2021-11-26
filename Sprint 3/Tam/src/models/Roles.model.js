@@ -5,7 +5,7 @@ const RolesSchema = new Schema({
     roles_id:{type:String, required:[true, 'Campo obligatorio']},
     nombre_rol:{type:String, required:[true, 'Campo obligatorio']},
     descripción:{type:String, required:[false, 'Campo opcional']},
-    created_at: {type: Date, default: Date.now}
+    creado_el: {type: Date, default: Date.now}
 })
 
 
