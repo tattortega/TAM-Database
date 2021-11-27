@@ -1,6 +1,6 @@
 const DatosBiologicosCtrl={}
-const { Error } = require('mongoose')
-const DatosBiologicos = require('../models/datosBiologicos.models.js')
+const {} = require('mongoose')
+const DatosBiologicos = require('../models/datosBiologicos.model.js')
 
 DatosBiologicosCtrl.crear = async(req,res)=>{
     try {
