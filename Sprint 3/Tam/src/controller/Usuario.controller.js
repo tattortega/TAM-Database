@@ -111,9 +111,15 @@ usuarioCtrl.eliminar= async (req,res)=>{
     try {
         const id = req.params.id
         const respuesta = await Usuario.findByIdAndRemove({_id:id})
+        if(respuesta==null){
+            res.json({
+                mensaje: 'El usuario no se encuentra en la base de datos'
+            })
+        }else{
         res.json({
             mensaje: 'Usuario eliminado'
         })
+    }
     } catch (error) {
         res.json({
             mensaje: 'El usuario no se encuentra en la base de datos'

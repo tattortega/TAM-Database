@@ -7,7 +7,7 @@ paisCtrl.getPaises = async (req,res)=>{
         const pais = await Pais.find({});
         res.json(pais);
     } catch (error) {
-        console.log(error);
+        res.send('No se encuentran paises');
     } 
 };
 
@@ -17,7 +17,7 @@ paisCtrl.getPais = async (req,res)=>{
         const pais = await Pais.find({id_pais:req.params.id_pais});
         res.json(pais);
     } catch (error) {
-        console.log(error);
+        res.send('No se encuentra el pais');
     } 
 };
 
@@ -30,10 +30,10 @@ paisCtrl.createPais = async (req,res)=>{
         }
         let _pais = new Pais(paisTemp);
         await _pais.save();
-        res.send('creado');
+        res.send('Creado correctamente');
 
     } catch (error) {
-        console.log(error);
+        res.send('No se pudo crear el pais');
     } 
 };
 
@@ -45,20 +45,27 @@ paisCtrl.editPais = async (req,res)=>{
             nombre:req.body.nombre,
         }
         await Pais.updateOne({id_pais:req.params.id_pais},paisTemp);
-            res.send('actualizado');
+            res.send('Actualizado correctamente');
         
     } catch (error) {
-        console.log(error);
+        res.send('No se pudo actualizar el pais');
     } 
 };
 
 //Eliminar pais
 paisCtrl.deletePais = async (req,res)=>{
     try {
-        await Pais.deleteOne({id_pais:req.params.id_pais});
-        res.send('Eliminado');
+        const id_pais = req.params.id_pais
+        const respuesta = await Pais.deleteOne({id_pais:id_pais});
+        if(respuesta==count){
+            res.send({
+                mensaje: 'La busqueda no se encuentra en la base de datos'
+            })
+        }else{
+        res.send('Eliminado correctamente');
+        }
     } catch (error) {
-        console.log(error);
+        res.send('No se pudo eliminar el pais');
     } 
 };
 

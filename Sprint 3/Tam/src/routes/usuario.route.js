@@ -14,6 +14,6 @@ router.get('/Usuarios/Apellidos/:apellidos', UsuarioCtrl.buscarApellido)
 router.get('/Usuarios/Correo/:correo', UsuarioCtrl.buscarCorreo)
 router.get('/Usuarios/Usuario/:usuario', UsuarioCtrl.buscarUsuario)
 router.put('/Usuarios/:id', UsuarioCtrl.actualizar)
-router.delete('/Usuarios/:id',Auto.verificarToken, UsuarioCtrl.eliminar)
+router.delete('/Usuarios/:id', UsuarioCtrl.eliminar)
 
 module.exports = router

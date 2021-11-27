@@ -3,7 +3,7 @@ const router = Router()
 const DatosBiologicosCtrl = require('../controller/datosBiologicos.controller.js')
 
 router.get('/DatosBiologicos',DatosBiologicosCtrl.buscar_todos)
-router.get('/DatoBiologico/id/:id',DatosBiologicosCtrl.buscar_por_id)
+router.get('/DatoBiologico/:id',DatosBiologicosCtrl.buscar_por_id)
 router.get('/DatosBiologicos/genero_parasito/:genero_parasito',DatosBiologicosCtrl.buscarParasito)
 router.get('/DatosBiologicos/key_usuario/:key_usuario',DatosBiologicosCtrl.buscarUsuario)
 router.get('/DatosBiologicos/latitud/:latitud',DatosBiologicosCtrl.buscarLatitud)
