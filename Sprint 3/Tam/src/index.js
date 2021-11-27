@@ -17,9 +17,9 @@ app.use(cors({origen:'*'}))
 app.use(require('./routes/usuario.route'))
 app.use(require('./routes/soporte.route'))
 app.use(require('./routes/pais.route'))
-app.use(require('./routes/datosbiologicos.route'))
+app.use(require('./routes/datosBiologicos.route'))
 app.use(require('./routes/roles.route'))
-
+    
 
 
 app.listen(app.get('Port'),()=>{

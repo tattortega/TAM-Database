@@ -1,6 +1,24 @@
 const soporteCtrl = {};
 const Soporte = require('../models/soporte.model');
 
+//Crear soporte
+soporteCtrl.createSoporte = async (req,res)=>{ 
+    try {
+        const soporteTemp = {
+            usuario:req.body.usuario,
+            identificacion:req.body.identificacion,
+            correo:req.body.correo,
+            descripcion:req.body.descripcion,
+        }
+        let _soporte = new Soporte(soporteTemp);
+        await _soporte.save();
+        res.send('Registro de soporte creado');
+
+    } catch (error) {
+        res.send('No se pudo crear el registro');
+    } 
+};
+
 //Consultar todos los reportes
 soporteCtrl.getSoportes = async (req,res)=>{
     try {
@@ -21,23 +39,7 @@ soporteCtrl.getSoporte = async (req,res)=>{
     } 
 };
 
-//Crear soporte
-soporteCtrl.createSoporte = async (req,res)=>{ 
-    try {
-        const soporteTemp = {
-            usuario:req.body.usuario,
-            identificacion:req.body.identificacion,
-            correo:req.body.correo,
-            descripcion:req.body.descripcion,
-        }
-        let _soporte = new Soporte(soporteTemp);
-        await _soporte.save();
-        res.send('Registro de soporte creado');
 
-    } catch (error) {
-        res.send('No se pudo crear el registro');
-    } 
-};
 
 //Actualizar soporte
 soporteCtrl.editSoporte = async (req,res)=>{

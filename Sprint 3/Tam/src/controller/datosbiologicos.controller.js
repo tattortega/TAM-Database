@@ -1,11 +1,12 @@
 const DatosBiologicosCtrl={}
+const { Error } = require('mongoose')
 const DatosBiologicos = require('../models/datosBiologicos.models.js')
 
 DatosBiologicosCtrl.crear = async(req,res)=>{
     try {
         const {key_usuario,latitud,longitud,localidad,elevacion,codigo_genbank,marcador_molecular,orden,especie,familia,genero_parasito,bibliographic_ref,id_pais} = req.body
 
-        const NuevosDatosBiologicos = DatosBiologicos({
+        const NuevosDatosBiologicos = new DatosBiologicos({
             key_usuario,
             latitud,
             longitud,
@@ -19,13 +20,10 @@ DatosBiologicosCtrl.crear = async(req,res)=>{
             genero_parasito,
             bibliographic_ref,
             id_pais
-        })
-    
-        const respuesta = await NuevosDatosBiologicos.save()
-        console.log(respuesta)
+        })     
+        await NuevosDatosBiologicos.save()
         res.json({
-            mensaje:'Datos biologicos registrados'
-            
+            mensaje:'Datos biologicos registrados'            
         })
     } catch (error) {
         res.send('No se pudo registrar los datos biologicos')
@@ -57,8 +55,7 @@ DatosBiologicosCtrl.buscar_por_id = async(req,res)=>{
              
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -76,8 +73,7 @@ DatosBiologicosCtrl.buscarParasito= async(req,res)=>{
              
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -94,8 +90,7 @@ DatosBiologicosCtrl.buscarUsuario= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -112,8 +107,7 @@ DatosBiologicosCtrl.buscarLatitud= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -130,8 +124,7 @@ DatosBiologicosCtrl.buscarLongitud= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -148,8 +141,7 @@ DatosBiologicosCtrl.buscarElevacion= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -166,8 +158,7 @@ DatosBiologicosCtrl.buscarLocalidad= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -183,8 +174,7 @@ DatosBiologicosCtrl.buscarCodigoGenbank= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -200,8 +190,7 @@ DatosBiologicosCtrl.buscarMarcadorMolecular= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -217,8 +206,7 @@ DatosBiologicosCtrl.buscarOrden= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -234,8 +222,7 @@ DatosBiologicosCtrl.buscarEspecie= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -251,8 +238,7 @@ DatosBiologicosCtrl.buscarFamilia= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -268,8 +254,7 @@ DatosBiologicosCtrl.buscarPais= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -285,8 +270,7 @@ DatosBiologicosCtrl.buscarRefBiblio= async(req,res)=>{
         }else{res.json(respuesta)  }
     } catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -305,8 +289,7 @@ DatosBiologicosCtrl.actualizar = async(req,res)=>{
     }}
     catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }
@@ -315,7 +298,7 @@ DatosBiologicosCtrl.actualizar = async(req,res)=>{
 DatosBiologicosCtrl.eliminar = async(req,res)=>{
     try {
         const id = req.params.id
-        const respuesta = await DatosBiologicos.deleteOne({_id: id})
+        const respuesta = await DatosBiologicos.findByIdAndDelete({_id: id})
         if(respuesta==null){
             res.json({
                 mensaje: 'La busqueda no se encuentra en la base de datos'
@@ -327,8 +310,7 @@ DatosBiologicosCtrl.eliminar = async(req,res)=>{
     } 
     catch (error) {       
         return res.status(400).json({
-            mensaje:'Ocurrió un error',
-            error
+            mensaje:'La busqueda no se encuentra en la base de datos'
         })
     }
 }

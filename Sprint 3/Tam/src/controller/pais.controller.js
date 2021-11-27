@@ -1,6 +1,22 @@
 const paisCtrl = {};
 const Pais = require('../models/pais.model');
 
+//Crear pais
+paisCtrl.createPais = async (req,res)=>{ 
+    try {
+        const paisTemp = {
+            id_pais:req.body.id_pais,
+            nombre:req.body.nombre,
+        }
+        let _pais = new Pais(paisTemp);
+        await _pais.save();
+        res.send('Creado correctamente');
+
+    } catch (error) {
+        res.send('No se pudo crear el pais');
+    } 
+};
+
 //Consultar todos los paises
 paisCtrl.getPaises = async (req,res)=>{
     try {
@@ -21,21 +37,7 @@ paisCtrl.getPais = async (req,res)=>{
     } 
 };
 
-//Crear pais
-paisCtrl.createPais = async (req,res)=>{ 
-    try {
-        const paisTemp = {
-            id_pais:req.body.id_pais,
-            nombre:req.body.nombre,
-        }
-        let _pais = new Pais(paisTemp);
-        await _pais.save();
-        res.send('Creado correctamente');
 
-    } catch (error) {
-        res.send('No se pudo crear el pais');
-    } 
-};
 
 //Actualizar pais
 paisCtrl.editPais = async (req,res)=>{
