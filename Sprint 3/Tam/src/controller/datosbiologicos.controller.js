@@ -22,6 +22,7 @@ DatosBiologicosCtrl.crear = async(req,res)=>{
         })
     
         const respuesta = await NuevosDatosBiologicos.save()
+        console.log(respuesta)
         res.json({
             mensaje:'Datos biologicos registrados'
             
@@ -314,7 +315,7 @@ DatosBiologicosCtrl.actualizar = async(req,res)=>{
 DatosBiologicosCtrl.eliminar = async(req,res)=>{
     try {
         const id = req.params.id
-        const respuesta = await DatosBiologicos.findByIdAndRemove({_id: id})
+        const respuesta = await DatosBiologicos.deleteOne({_id: id})
         if(respuesta==null){
             res.json({
                 mensaje: 'La busqueda no se encuentra en la base de datos'

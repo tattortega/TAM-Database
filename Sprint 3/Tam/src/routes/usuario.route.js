@@ -4,7 +4,7 @@ const UsuarioCtrl= require('../controller/usuario.controller')
 const Auto = require('../helper/Auto')
 
 
-router.post('/Usuario',Auto.verificarToken, UsuarioCtrl.crear)
+router.post('/Usuario', UsuarioCtrl.crear)
 router.post('/login', UsuarioCtrl.login)
 router.get('/Usuarios', UsuarioCtrl.listar)
 router.get('/Usuario/:_id', UsuarioCtrl.listarId)
