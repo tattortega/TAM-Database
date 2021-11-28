@@ -1,24 +1,7 @@
 const soporteCtrl = {};
 const Soporte = require('../models/soporte.model');
 
-soporteCtrl.getSoportes = async (req,res)=>{
-    try {
-        const soporte = await Soporte.find({});
-        res.json(soporte);
-    } catch (error) {
-        console.log(error);
-    } 
-};
-
-soporteCtrl.getSoporte = async (req,res)=>{ 
-    try {
-        const soporte = await Soporte.find({_id:req.params._id});
-        res.json(soporte);
-    } catch (error) {
-        console.log(error);
-    } 
-};
-
+//Crear soporte
 soporteCtrl.createSoporte = async (req,res)=>{ 
     try {
         const soporteTemp = {
@@ -29,13 +12,36 @@ soporteCtrl.createSoporte = async (req,res)=>{
         }
         let _soporte = new Soporte(soporteTemp);
         await _soporte.save();
-        res.send('creado');
+        res.send('Registro de soporte creado');
 
     } catch (error) {
-        console.log(error);
+        res.send('No se pudo crear el registro');
     } 
 };
 
+//Consultar todos los reportes
+soporteCtrl.getSoportes = async (req,res)=>{
+    try {
+        const soporte = await Soporte.find({});
+        res.json(soporte);
+    } catch (error) {
+        res.send('No se encuentra ningun registro');
+    } 
+};
+
+//Consultar soporte por id
+soporteCtrl.getSoporte = async (req,res)=>{ 
+    try {
+        const soporte = await Soporte.find({_id:req.params._id});
+        res.json(soporte);
+    } catch (error) {
+        res.send('No se encuentra el registro');
+    } 
+};
+
+
+
+//Actualizar soporte
 soporteCtrl.editSoporte = async (req,res)=>{
     try {
         const soporteTemp = {
@@ -46,19 +52,20 @@ soporteCtrl.editSoporte = async (req,res)=>{
         }
         await Soporte.updateOne({_id:req.params._id},
             soporteTemp);
-            res.send('actualizado');
+            res.send('Registro de soporte actualizado');
         
     } catch (error) {
-        console.log(error);
+        res.send('No se pudo actualizar el registro');
     } 
 };
 
+//Eliminar soporte
 soporteCtrl.deleteSoporte = async (req,res)=>{
     try {
         await Soporte.deleteOne({_id:req.params._id});
-        res.send('Eliminado');
+        res.send('Registro de soporte eliminado');
     } catch (error) {
-        console.log(error);
+        res.send('No se pudo eliminar el registro');
     } 
 };
 

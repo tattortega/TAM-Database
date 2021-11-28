@@ -3,11 +3,11 @@ const router = Router();
 
 const{getSoportes,getSoporte,createSoporte,editSoporte,deleteSoporte} = require('../controller/soporte.controller');
 
-router.get('/soportes',getSoportes);
-router.get('/soporte/:_id',getSoporte);
-router.post('/soporte',createSoporte);
-router.put('/soporte/:_id',editSoporte);
-router.delete('/soporte/:_id',deleteSoporte);
+router.get('/Soportes',getSoportes);
+router.get('/Soportes/:_id',getSoporte);
+router.post('/Soportes',createSoporte);
+router.put('/Soportes/:_id',editSoporte);
+router.delete('/Soportes/:_id',deleteSoporte);
 
 
 module.exports = router;
