@@ -14,8 +14,13 @@ app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
 app.use(cors({origen:'*'}))
 
-app.use('/usuario',require('./routes/Usuario.routes'))
-app.use('/datos_biologicos',require('./routes/datosbiologicos.route'))
+app.use(require('./routes/usuario.route'))
+app.use(require('./routes/soporte.route'))
+app.use(require('./routes/pais.route'))
+app.use(require('./routes/datosBiologicos.route'))
+app.use(require('./routes/roles.route'))
+    
+
 
 app.listen(app.get('Port'),()=>{
     console.log('Servidor corriendo y escuchando por el puerto', app.get('Port'))
