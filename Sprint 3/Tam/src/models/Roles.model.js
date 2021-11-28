@@ -11,4 +11,4 @@ const RolesSchema = new Schema({
 
 //convertir a modelo
 
-module.exports = mongoose.model('roles',RolesSchema)
+module.exports = mongoose.model('roles',RolesSchema);

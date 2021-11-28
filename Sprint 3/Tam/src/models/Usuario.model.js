@@ -15,4 +15,4 @@ const UsuarioSchema = new Schema({
 
 //convertir a modelo
 
-module.exports = mongoose.model('usuario',UsuarioSchema)
+module.exports = mongoose.model('usuario',UsuarioSchema);

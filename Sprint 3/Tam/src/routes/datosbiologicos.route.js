@@ -24,4 +24,4 @@ router.delete('/DatosBiologicos/:id',DatosBiologicosCtrl.eliminar)
 
 
 
-module.exports = router
+module.exports = router;

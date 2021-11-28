@@ -244,4 +244,4 @@ usuarioCtrl.buscarUsuario = async(req,res)=>{
 
 
 
-module.exports = usuarioCtrl
+module.exports = usuarioCtrl;

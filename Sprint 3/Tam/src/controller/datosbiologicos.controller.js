@@ -315,4 +315,4 @@ DatosBiologicosCtrl.eliminar = async(req,res)=>{
     }
 }
 
-module.exports = DatosBiologicosCtrl
+module.exports = DatosBiologicosCtrl;

@@ -99,4 +99,4 @@ rolesCtrl.buscarRolPorNombre = async(req,res)=>{
 }
 
 
-module.exports = rolesCtrl
+module.exports = rolesCtrl;
