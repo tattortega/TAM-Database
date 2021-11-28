@@ -4,7 +4,7 @@ const UsuarioCtrl= require('../controller/usuario.controller')
 const Auto = require('../helper/Auto')
 
 
-router.post('/Usuario', UsuarioCtrl.crear)
+router.post('/Usuario',Auto.verificarToken, UsuarioCtrl.crear)
 router.post('/login', UsuarioCtrl.login)
 router.get('/Usuarios', UsuarioCtrl.listar)
 router.get('/Usuario/:_id', UsuarioCtrl.listarId)
@@ -14,6 +14,6 @@ router.get('/Usuarios/Apellidos/:apellidos', UsuarioCtrl.buscarApellido)
 router.get('/Usuarios/Correo/:correo', UsuarioCtrl.buscarCorreo)
 router.get('/Usuarios/Usuario/:usuario', UsuarioCtrl.buscarUsuario)
 router.put('/Usuarios/:id', UsuarioCtrl.actualizar)
-router.delete('/Usuarios/:id', UsuarioCtrl.eliminar)
+router.delete('/Usuarios/:id',Auto.verificarToken, UsuarioCtrl.eliminar)
 
 module.exports = router
