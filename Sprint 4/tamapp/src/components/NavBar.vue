@@ -9,6 +9,8 @@
   </nav>
 </template>
 
+
+
 <style>
 .MenuWrap {
   background-color: indigo;

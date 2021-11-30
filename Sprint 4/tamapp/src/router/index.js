@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import IngresarDatosBiologicos from "../views/IngresarDatosBiologicos.vue";
 
 Vue.use(VueRouter);
 
@@ -10,6 +11,11 @@ const routes = [
     name: "Home",
     component: Home,
   },
+  {
+    path: "/ingresar_datos_biologicos",
+    name: "IngresarDatosBiologicos",
+    component: IngresarDatosBiologicos,
+  }
 ];
 
 const router = new VueRouter({
