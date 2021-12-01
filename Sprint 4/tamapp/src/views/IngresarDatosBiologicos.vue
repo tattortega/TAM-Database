@@ -1,5 +1,6 @@
 <template >
       <main>
+          <NavBarLogin/>
             <p class="parrafo">
                 Para importar los datos a la plataforma tendrá dos opciones:</p>
             <p class="parrafo">
@@ -9,7 +10,7 @@
             </p>
     
 
-    <form action="IngresoDatos.html" method="POST">
+    <form action="" method="POST">
         <div class="grid-container1">
             <div class="grid-item">
                 <h2>OPCIÓN 1:Ingrese datos manualmente</h2>
@@ -97,7 +98,7 @@
                 <label for="text">*Campos requeridos</label>
             </div>
             <div class="grid-item">
-                <button onclick="datos_registrados()" class="button formbutt" type="submit">Ingresar Datos</button>
+                <button @click="datos_registrados()" class="button formbutt" type="submit">Ingresar Datos</button>
             </div>                        
         </div>
     </form>
@@ -144,8 +145,14 @@
 </template>
 
 <script>
-export default {
 
+import NavBarLogin from "../components/NavBarLogin.vue";
+
+export default {
+    name:"IngresarDatosBiologicos",
+    components:{
+        NavBarLogin
+    }
 }
 </script>
 

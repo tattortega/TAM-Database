@@ -1,7 +1,8 @@
 <template>
     <nav class="MenuWrap">
-        <div class="menu-item">
-            <a href="../Index/index.html" class="ListItem">Cerrar sesión</a>
+        <div class="menu-item" v-if="logueado">
+            <router-link class="ListItem" to="/Login">Cerrar sesión</router-link>
+            <!-- <a href="../Index/index.html" class="ListItem">Cerrar sesión</a> -->
         </div>
         <div class="menu-item">
             <a href="../FormularioContactarSoporte/contactar_soporte.html" class="ListItem">Contáctanos</a>
@@ -9,17 +10,19 @@
         <div class="menu-item">
             <a href="../FormularioInformes/informes.html" class="ListItem">Consultas</a>
         </div>
-        <div class="menu-item">
-            <a href="../FormularioIngresoDatos/IngresoDatos.html" class="ListItem">Ingresa tus datos</a>
+        <div class="menu-item" v-if="logueado">
+            <router-link class="ListItem" to="/IngresarDatosBiologicos">Ingresa tus datos</router-link>
+            <!-- <a href="../FormularioIngresoDatos/IngresoDatos.html" class="ListItem">Ingresa tus datos</a> -->
         </div>        
     </nav>
 </template>
 
 <script>
 export default {
+  name:"NavBarLogin",
  data: function(){
    return{
-
+     logueado:true
    }
  }
 }

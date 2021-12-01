@@ -12,7 +12,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/ingresar_datos_biologicos",
+    path: "/IngresarDatosBiologicos",
     name: "IngresarDatosBiologicos",
     component: IngresarDatosBiologicos,
   }

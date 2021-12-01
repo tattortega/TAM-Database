@@ -1,5 +1,7 @@
 <template>
-  <main class="iniciar_sesion">
+<div>
+     <NavBarLogout/>
+  <main class="iniciar_sesion">    
     <div id="parrafo_descripcion">
       <div id="descripcion">
         TAM DATABASE es una plataforma desarrollada para facilitar la
@@ -66,10 +68,19 @@
       </form>
     </section>
   </main>
+  </div>
 </template>
 
 <script>
-export default {};
+
+import NavBarLogout from "../components/NavBarLogout.vue";
+
+export default {
+    name:"Login",
+    components:{
+       NavBarLogout
+    }
+}
 </script>
 
 <style>
