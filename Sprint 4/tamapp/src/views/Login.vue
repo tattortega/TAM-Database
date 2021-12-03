@@ -29,7 +29,7 @@
         <div class="campos">
           <input
             class="inputs"
-            id="password"
+            id="contraseña"
             type="password"
             placeholder="Contraseña"
             size="30"
@@ -60,7 +60,7 @@
           >
         </div>
         <div class="ubicar">
-          <button id="button" @click="InicioSesion"><b>Ingresar</b></button>
+          <button id="button" @click="ingresar"><b>Ingresar</b></button>
           <a id="button2" href="../registro"><label>Registrate </label></a>
         </div>
       </form>
@@ -73,13 +73,17 @@
 import api from "@/logic/Api.vue"
 export default {
   methods:{
-    async InicioSesion(){
+    async ingresar(){
       const usuario= document.getElementById('usuario').value;
-      const password= document.getElementById('password').value;
-      if (usuario===null || password===null){
+      const contraseña= document.getElementById('contraseña').value;
+      if (usuario===null || contraseña===null){
         alert("Usuario o contraseña incorrecta")
       }else{
-        await api.obtenerUno("")
+        await api.obtenerUno("/listar", {
+          usuario:usuario,
+          contraseña:contraseña
+        })
+        alert("Inicio de sesión")
 
       }
     }
