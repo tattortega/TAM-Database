@@ -10,6 +10,11 @@ const routes = [
     name: "Home",
     component: Home,
   },
+  {
+    path: "/registro",
+    name: "Registro",
+    component: () => import('../views/Registro.vue'),
+  }
 ];
 
 const router = new VueRouter({
@@ -18,4 +23,4 @@ const router = new VueRouter({
   routes,
 });
 
-export default router;
+export default router

@@ -8,7 +8,7 @@
       </div>
     </div>
     <section id="formulario_iniciar_sesion">
-      <form action="../FormularioIngresoDatos/IngresoDatos.html" method="POST">
+      <form action="../IngresoDatos" method="POST">
         <div class="msje_inicia_sesion">
           <h3>INICIAR SESION</h3>
         </div>
@@ -16,9 +16,10 @@
         <div class="campos">
           <input
             class="inputs"
-            id="user"
+            id="email"
             type="text"
-            placeholder="Usuario"
+            placeholder="Correo
+            "
             size="30"
             minlength="5"
             maxlength="20"
@@ -54,14 +55,14 @@
         </div>
         <div id="br">
           <a
-            href="../FormularioRecuperarUsuario/recuperar_usuario.html"
+            href="../recuperar_usuario"
             id="link"
             >Recuperar usuario y/o contraseña</a
           >
         </div>
         <div class="ubicar">
           <button id="button" onclick="InicioSesion()"><b>Ingresar</b></button>
-          <a href="#modal" id="button2"><label>Registrate</label></a>
+          <a id="button2" href="../registro"><label>Registrate </label></a>
         </div>
       </form>
     </section>
@@ -72,7 +73,7 @@
 export default {};
 </script>
 
-<style>
+<style scope>
 body {
     background: linear-gradient(to bottom right, #69af9d83, #fffffd8c);
 }

@@ -1,10 +1,10 @@
 <template>
   <nav class="MenuWrap">
     <div class="menu-item">
-      <a href="../FormularioContactarSoporte/contactar_soporte.html" class="ListItem">Contáctanos</a>
+      <a href="../contactar_soporte.html" class="ListItem">Contáctanos</a>
     </div>
     <div class="menu-item">
-      <a href="../FormularioInformes/informes.html" class="ListItem">Consultas</a>
+      <a href="../informes.html" class="ListItem">Consultas</a>
     </div>
   </nav>
 </template>
