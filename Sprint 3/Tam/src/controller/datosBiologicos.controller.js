@@ -20,8 +20,10 @@ DatosBiologicosCtrl.crear = async(req,res)=>{
             genero_parasito,
             bibliographic_ref,
             id_pais
-        })     
+        })
+        console.log(NuevosDatosBiologicos)     
         await NuevosDatosBiologicos.save()
+        console.log(NuevosDatosBiologicos)
         res.json({
             mensaje:'Datos biologicos registrados'            
         })
