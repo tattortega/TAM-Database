@@ -1,18 +1,16 @@
 <template>
     <nav class="MenuWrap">
-        <div class="menu-item" v-if="logueado">
+        <div class="menu-item">
             <router-link class="ListItem" to="/Home">Cerrar sesión</router-link>
-            <!-- <a href="../Index/index.html" class="ListItem">Cerrar sesión</a> -->
         </div>
         <div class="menu-item">
-            <a href="../FormularioContactarSoporte/contactar_soporte.html" class="ListItem">Contáctanos</a>
+            <router-link class="ListItem" to="/Contactanos">Contáctanos</router-link>
         </div>
         <div class="menu-item">
-            <a href="../FormularioInformes/informes.html" class="ListItem">Consultas</a>
+            <router-link class="ListItem" to="/Consultas">Consultas</router-link>
         </div>
-        <div class="menu-item" v-if="logueado">
+        <div class="menu-item">
             <router-link class="ListItem" to="/IngresarDatosBiologicos">Ingresa tus datos</router-link>
-            <!-- <a href="../FormularioIngresoDatos/IngresoDatos.html" class="ListItem">Ingresa tus datos</a> -->
         </div>        
     </nav>
 </template>
@@ -22,7 +20,6 @@ export default {
   name:"NavBarLogin",
  data: function(){
    return{
-     logueado:true
    }
  }
 }

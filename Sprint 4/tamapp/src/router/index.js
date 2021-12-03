@@ -2,12 +2,13 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import IngresarDatosBiologicos from "../views/IngresarDatosBiologicos.vue";
+import Consultas from "../views/Consultas.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/Home",
     name: "Home",
     component: Home,
   },
@@ -15,6 +16,11 @@ const routes = [
     path: "/IngresarDatosBiologicos",
     name: "IngresarDatosBiologicos",
     component: IngresarDatosBiologicos,
+  },
+  {
+    path: "/Consultas",
+    name: "Consultas",
+    component: Consultas,
   }
 ];
 

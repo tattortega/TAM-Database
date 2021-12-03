@@ -1,18 +1,16 @@
 <template>
     <nav class="MenuWrap">
         <div class="menu-item" v-if="logueado">
-            <router-link to="/Login">Cerrar sesión</router-link>
-            <a href="../Index/index.html" class="ListItem">Cerrar sesión</a>
+            <router-link to="/Home">Cerrar sesión</router-link>
         </div>
         <div class="menu-item">
-            <a href="../FormularioContactarSoporte/contactar_soporte.html" class="ListItem">Contáctanos</a>
+            <router-link class="ListItem" to="/Contactanos">Contáctanos</router-link>
         </div>
         <div class="menu-item">
-            <a href="../FormularioInformes/informes.html" class="ListItem">Consultas</a>
+            <router-link class="ListItem" to="/Consultas">Consultas</router-link>
         </div>
         <div class="menu-item" v-if="logueado">
             <router-link to="/IngresarDatosBiologicos">Ingresa tus datos</router-link>
-            <a href="../FormularioIngresoDatos/IngresoDatos.html" class="ListItem">Ingresa tus datos</a>
         </div>        
     </nav>
 </template>
