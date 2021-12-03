@@ -77,7 +77,7 @@
 
             <div class="grid-item">
                 <label for="codigo genbank"> Código Genbank:*</label>
-                <input type="text" size="35" name="Codigo Genbank" id="geob" required/>
+                <input type="text" size="35" name="Codigo Genbank" id="codigo_genbank" required/>
             </div>
             <div class="grid-item">
                 <p>Si ha realizado una publicación ingrese la cita bibliográfica
@@ -87,7 +87,7 @@
 
             <div class="grid-item">
                 <label for="marcador molecular"> Marcador Molecular:*</label>
-                <input type="text" size="35" name="marcador molecular" id = "marmol" required/>
+                <input type="text" size="35" name="marcador molecular" id = "marcador_molecular" required/>
             </div>
             <div class="grid-item">
                 <label for="referencia"> Referencia:*</label>
@@ -98,7 +98,7 @@
                 <label for="text">*Campos requeridos</label>
             </div>
             <div class="grid-item">
-                <button @click="datos_registrados()" class="button formbutt" type="submit">Ingresar Datos</button>
+                <button @click="ingresar" class="button formbutt" type="submit">Ingresar Datos</button>
             </div>                        
         </div>
     </form>
@@ -136,7 +136,7 @@
                     <button class="button2 formbutt" type="reset">Cancelar</button>
                 </p>-->
                 <p>
-                    <button class="button formbutt" type="submit">Enviar archivo</button>
+                    <button @click="ingresar" class="button formbutt" type="submit">Enviar archivo</button>
                 </p>
             </div>
         </div>
@@ -145,13 +145,52 @@
 </template>
 
 <script>
-
+//import Api from "@/logic/api.js";
+import api from "../logic/api";
 import NavBarLogin from "../components/NavBarLogin.vue";
 
 export default {
     name:"IngresarDatosBiologicos",
     components:{
         NavBarLogin
+    },
+    methods:{
+        async crear(){
+            const latitud = document.getElementById('latitud').value;
+            const longitud = document.getElementById('longitud').value;
+            const orden = document.getElementById('orden').value;
+            const familia = document.getElementById('familia').value;
+            const pais = document.getElementById('pais').value;
+            const especie = document.getElementById('especie').value;
+            const localidad = document.getElementById('localidad').value;
+            const elevacion = document.getElementById('elevacion').value;
+            const genero = document.getElementById('genero').value;
+            const codigo_genbank = document.getElementById('codigo_genbank').value;
+            const marcador_molecular = document.getElementById('marcador_molecular').value;
+            const referencia = document.getElementById('referencia').value;
+
+            if (latitud === '' || orden === '' || longitud === '' || pais === '' || especie === '' || genero === ''
+                || codigo_genbank === '' || marcador_molecular === '' || referencia === ''){
+                    alert("Los campos obligatorios no pueden estar vacíos");
+            }
+            else {
+                await api.crear("IngresarDatosBiologicos",{
+                latitud:latitud,
+                longitud:longitud,
+                orden:orden,
+                familia:familia,
+                pais:pais,
+                especie:especie,
+                localidad:localidad,    
+                elevacion:elevacion,
+                genero:genero,
+                codigo_genbank:codigo_genbank,
+                marcador_molecular:marcador_molecular,
+                referencia:referencia
+            })
+                alert("Registro de datos biológicos exitoso");               
+            }
+        }
     }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <nav class="MenuWrap">
         <div class="menu-item" v-if="logueado">
-            <router-link class="ListItem" to="/Login">Cerrar sesión</router-link>
+            <router-link class="ListItem" to="/Home">Cerrar sesión</router-link>
             <!-- <a href="../Index/index.html" class="ListItem">Cerrar sesión</a> -->
         </div>
         <div class="menu-item">
