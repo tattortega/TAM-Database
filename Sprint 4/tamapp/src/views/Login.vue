@@ -8,7 +8,7 @@
       </div>
     </div>
     <section id="formulario_iniciar_sesion">
-      <form action="../IngresoDatos" method="POST">
+      <form action="../IngresoDatos" method="GET">
         <div class="msje_inicia_sesion">
           <h3>INICIAR SESION</h3>
         </div>
@@ -16,10 +16,9 @@
         <div class="campos">
           <input
             class="inputs"
-            id="email"
+            id="usuario"
             type="text"
-            placeholder="Correo
-            "
+            placeholder="Usuario"
             size="30"
             minlength="5"
             maxlength="20"
@@ -61,7 +60,7 @@
           >
         </div>
         <div class="ubicar">
-          <button id="button" onclick="InicioSesion()"><b>Ingresar</b></button>
+          <button id="button" @click="InicioSesion"><b>Ingresar</b></button>
           <a id="button2" href="../registro"><label>Registrate </label></a>
         </div>
       </form>
@@ -70,7 +69,24 @@
 </template>
 
 <script>
-export default {};
+
+import api from "@/logic/Api.vue"
+export default {
+  methods:{
+    async InicioSesion(){
+      const usuario= document.getElementById('usuario').value;
+      const password= document.getElementById('password').value;
+      if (usuario===null || password===null){
+        alert("Usuario o contraseña incorrecta")
+      }else{
+        await api.obtenerUno("")
+
+      }
+    }
+
+  }
+};
+
 </script>
 
 <style scope>
