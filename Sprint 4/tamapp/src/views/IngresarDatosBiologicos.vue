@@ -10,7 +10,7 @@
             </p>
     
 
-    <form action="" method="GET">
+    <form action="" >
         <div class="grid-container1">
             <div class="grid-item">
                 <h2>OPCIÓN 1:Ingrese datos manualmente</h2>
@@ -26,7 +26,7 @@
 
             <div class="grid-item">
                 <label for="latitud"> Latitud (decimal):*</label>
-                <input type="text" size="35" name="latitud" id= "latitud" required>
+                <input type="number" size="35" name="latitud" id= "latitud" required>
             </div>
             <div class="grid-item">
                 <label for="orden"> Orden:*</label>
@@ -35,7 +35,7 @@
 
             <div class="grid-item">
                 <label for="longitud"> Longitud (decimal):*</label>
-               <input type="text" size="35" name="longitud" id="longitud" required>
+               <input type="number" size="35" name="longitud" id="longitud" required>
             </div>
             <div class="grid-item">
                 <label for="familia" > Familia:</label>
@@ -61,11 +61,11 @@
 
             <div class="grid-item">
                 <label for="elevacion"> Elevación (mts):</label>
-                <input type="text" size="35" name="elevacion" id="elevacion"/>
+                <input type="number" size="35" name="elevacion" id="elevacion"/>
             </div>
             <div class="grid-item">
                 <label for="genero"> Género:*</label>
-                <input type="text" size="35" name="genero" id = "genero" required/>
+                <input type="text" size="35" name="genero" id = "genero_parasito" required/>
             </div>
 
             <div class="grid-item">
@@ -91,7 +91,7 @@
             </div>
             <div class="grid-item">
                 <label for="referencia"> Referencia:*</label>
-                <input type="text" size="35" name="referencia" id ="referencia" required/>
+                <input type="text" size="35" name="referencia" id ="bibliographic_ref" required/>
             </div>
 
             <div class="grid-item">
@@ -164,13 +164,13 @@ export default {
             const especie = document.getElementById('especie').value;
             const localidad = document.getElementById('localidad').value;
             const elevacion = document.getElementById('elevacion').value;
-            const genero = document.getElementById('genero').value;
+            const genero_parasito = document.getElementById('genero_parasito').value;
             const codigo_genbank = document.getElementById('codigo_genbank').value;
             const marcador_molecular = document.getElementById('marcador_molecular').value;
-            const referencia = document.getElementById('referencia').value;
+            const bibliographic_ref = document.getElementById('bibliographic_ref').value;
 
-            if (latitud === '' || orden === '' || longitud === '' || pais === '' || especie === '' || genero === ''
-                || codigo_genbank === '' || marcador_molecular === '' || referencia === ''){
+            if (latitud === '' || orden === '' || longitud === '' || pais === '' || especie === '' || genero_parasito === ''
+                || codigo_genbank === '' || marcador_molecular === '' || bibliographic_ref === ''){
                     alert("Los campos obligatorios no pueden estar vacíos");
             }
             else {
@@ -183,10 +183,10 @@ export default {
                 especie:especie,
                 localidad:localidad,    
                 elevacion:elevacion,
-                genero:genero,
+                genero_parasito:genero_parasito,
                 codigo_genbank:codigo_genbank,
                 marcador_molecular:marcador_molecular,
-                referencia:referencia
+                bibliographic_ref:bibliographic_ref
             })
                 alert("Registro de datos biológicos exitoso");               
             }

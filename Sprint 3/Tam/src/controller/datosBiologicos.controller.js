@@ -1,5 +1,4 @@
 const DatosBiologicosCtrl={}
-const {} = require('mongoose')
 const DatosBiologicos = require('../models/datosBiologicos.model.js')
 
 DatosBiologicosCtrl.crear = async(req,res)=>{
@@ -21,8 +20,8 @@ DatosBiologicosCtrl.crear = async(req,res)=>{
             bibliographic_ref,
             id_pais
         })
-        console.log(NuevosDatosBiologicos)     
-        await NuevosDatosBiologicos.save()
+        console.log(NuevosDatosBiologicos)
+        await NuevosDatosBiologicos.save().then(res=>{console.log(res)}).catch(err=>{console.log(err)})
         console.log(NuevosDatosBiologicos)
         res.json({
             mensaje:'Datos biologicos registrados'            

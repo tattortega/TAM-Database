@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Datos_biologicosSchema = new Schema({
-    key_usuario: {type:Number, required:[true, 'Campo obligatorio']},
+    key_usuario: {type:Number},
     latitud: {type:Number, required:[true, 'Campo obligatorio']},
     longitud: {type:Number, required:[true, 'Campo obligatorio']},
     localidad: {type:String, required:[true, 'Campo obligatorio']},
     elevacion: {type:Number, required:[true, 'Campo obligatorio']},
-    id_pais: {type:String, required:[true, 'Campo obligatorio']},
+    id_pais: {type:String,},
     codigo_genbank: {type:String, required:[true, 'Campo obligatorio']},
     marcador_molecular: {type:String, required:[true, 'Campo obligatorio']},
     orden: {type:String, required:[true, 'Campo obligatorio']},
