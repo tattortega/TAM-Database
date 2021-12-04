@@ -53,49 +53,133 @@
           </label>
         </div>
         <div id="br">
-          <a
-            href="../recuperar_usuario"
-            id="link"
+          <a href="../recuperar_usuario" id="link"
             >Recuperar usuario y/o contraseña</a
           >
         </div>
         <div class="ubicar">
           <button id="button" @click="ingresar"><b>Ingresar</b></button>
-          <a id="button2" href="../registro"><label>Registrate </label></a>
+          <a id="button2" href="#modal"><label>Regístrate </label></a>
         </div>
       </form>
     </section>
+    <!--Formulario de Registro-->
+    <aside id="modal" class="modal">
+      <div class="container">
+        <header class="header">
+          <a href="#" class="close-modal">X</a>
+          <h1>REGÍSTRATE</h1>
+        </header>
+        <hr />
+        <div>
+          <p><strong>Ingrese los siguientes datos para registrarse</strong></p>
+        </div>
+        <section>
+          <form id="form-reg" action="../index" method="POST">
+            <div class="formulario">
+              <div class="campo">
+                <input
+                  class="input"
+                  id="nombres"
+                  type="text"
+                  placeholder="Nombres"
+                  size="30"
+                  minlength="3"
+                  maxlength="30"
+                  required
+                />
+              </div>
+              <div class="campo">
+                <input
+                  class="input"
+                  id="apellidos"
+                  type="text"
+                  placeholder="Apellidos"
+                  size="30"
+                  minlength="3"
+                  maxlength="30"
+                  required
+                />
+              </div>
+              <div class="campo">
+                <input
+                  class="input"
+                  id="correo"
+                  type="email"
+                  placeholder="Correo electrónico"
+                  size="30"
+                  required
+                />
+              </div>
+              <div class="campo">
+                <input
+                  class="input"
+                  id="usuario"
+                  type="text"
+                  placeholder="Usuario"
+                  size="30"
+                  minlength="5"
+                  maxlength="20"
+                  required
+                  pattern="[.A-Za-z0-9]+"
+                />
+              </div>
+              <div class="campo">
+                <input
+                  class="input"
+                  id="contraseña"
+                  type="password"
+                  placeholder="Contraseña"
+                  size="30"
+                  minlength="5"
+                  maxlength="20"
+                  required
+                  pattern="[.A-Za-z0-9]+"
+                />
+              </div>
+            </div>
+            <div class="campo">
+              <input
+                type="submit"
+                id="boton-cuenta"
+                value="Crear cuenta"
+                onclick="RegistroExitoso()"
+              />
+            </div>
+          </form>
+        </section>
+      </div>
+    </aside>
   </main>
 </template>
 
 <script>
-
-import api from "@/logic/Api.vue"
+import api from "@/logic/Api.vue";
 export default {
-  methods:{
-    async ingresar(){
-      const usuario= document.getElementById('usuario').value;
-      const contraseña= document.getElementById('contraseña').value;
-      if (usuario===null || contraseña===null){
-        alert("Usuario o contraseña incorrecta")
-      }else{
+  methods: {
+    async ingresar() {
+      const usuario = document.getElementById("usuario").value;
+      const contraseña = document.getElementById("contraseña").value;
+      if (usuario === null || contraseña === null) {
+        alert("Usuario o contraseña incorrecta");
+      } else {
         await api.obtenerUno("/listar", {
-          usuario:usuario,
-          contraseña:contraseña
-        })
-        alert("Inicio de sesión")
-
+          usuario: usuario,
+          contraseña: contraseña,
+        });
+        alert("Inicio de sesión");
       }
-    }
-
-  }
+    },
+  },
 };
 
 </script>
 
 <style scope>
+
 body {
-    background: linear-gradient(to bottom right, #69af9d83, #fffffd8c);
+  background: linear-gradient(to bottom right, #69af9d83, #fffffd8c);
+  
 }
 
 .iniciar_sesion {
@@ -285,4 +369,124 @@ Estilo para el checkbox también*/
 }
 /*Fin código CSS (Estilo): para que se seleccione el cuadrito de mantener la sesion iniciada
 Estilo para el checkbox también*/
+
+/*
+#ch:hover {
+  border-color: indigo;
+}
+#lbl {
+  font-size: 15px;
+  color:indigo;
+}
+*/
+
+/*Ventana Modal*/
+#button2 {
+  transition: all 0.15s linear;
+}
+
+.modal {
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  z-index: 99999999;
+  background: rgba(0, 0, 0, 0.75);
+  width: 900vw;
+  height: 100vh;
+  opacity: 0;
+}
+
+.modal .container {
+  position: fixed;
+  transition: top 0.35x ease;
+  margin-left: 450px;
+  background: #bbc2d6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 6px;
+  padding: 1.2em;
+  text-align: center;
+}
+
+.close-modal {
+  color: indigo;
+  position: absolute;
+  top: 0.1em;
+  right: 0.375em;
+  margin: 0;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1em;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.header a:hover {
+  background-color: rgba(35, 0, 130, 0.452);
+}
+
+.modal:target {
+  opacity: 1;
+  top: 0;
+}
+
+.modal .btn-close-modal {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999991;
+}
+
+.modal:target .container {
+  top: 40px;
+  transition: top 0.35s ease;
+}
+
+/*Formulario Registro*/
+
+h1 {
+  color: indigo;
+  font-size: 1.5em;
+}
+
+p {
+  color: indigo;
+  margin-bottom: 0;
+}
+
+.formulario {
+  text-align: left;
+  padding: 10px;
+}
+
+.input {
+  padding: 0.2em;
+  font-size: 1em;
+  padding-right: 2em;
+  color: indigo;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.campo {
+  padding-top: 0.3em;
+}
+
+#boton-cuenta {
+  background-color: indigo;
+  border: 1px indigo solid;
+  border-radius: 1em;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#boton-cuenta:hover {
+  background-color: rgba(35, 0, 130, 0.452);
+}
 </style>
