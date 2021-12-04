@@ -119,7 +119,7 @@
                     subir sus datos, pues está fila de encabezado solo sirve 
                     como una guía para la organización de sus datos.
                 </p>
-                <a href="./EjemploFormularioDatos.xlsx">Puede descargar el ejemplo del archivo .xlsx dando click aquí</a>
+                <a href="../public/EjemploFormularioDatos.xlsx" download="">Puede descargar el ejemplo del archivo .xlsx dando click aquí</a>
 
                 <h3>Importe un archivo</h3>
 
@@ -196,6 +196,9 @@ export default {
 </script>
 
 <style>
+input[type=number]{
+    width: 20.2em;
+} 
   .grid-container1 {
     background-color: rgba(35, 0, 130, 0.178);
     display: grid;
