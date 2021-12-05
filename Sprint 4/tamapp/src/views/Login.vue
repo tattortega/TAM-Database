@@ -8,7 +8,7 @@
       </div>
     </div>
     <section id="formulario_iniciar_sesion">
-      <form action="../IngresoDatos" method="GET">
+      <form action="" method="GET">
         <div class="msje_inicia_sesion">
           <h3>INICIAR SESION</h3>
         </div>
@@ -75,7 +75,7 @@
           <p><strong>Ingrese los siguientes datos para registrarse</strong></p>
         </div>
         <section>
-          <form id="form-reg" action="../index" method="POST">
+          <form id="form-reg" action="../Home" method="GET">
             <div class="formulario">
               <div class="campo">
                 <input
@@ -114,7 +114,7 @@
               <div class="campo">
                 <input
                   class="input"
-                  id="usuario"
+                  id="usuario2"
                   type="text"
                   placeholder="Usuario"
                   size="30"
@@ -127,7 +127,7 @@
               <div class="campo">
                 <input
                   class="input"
-                  id="contraseña"
+                  id="contraseña2"
                   type="password"
                   placeholder="Contraseña"
                   size="30"
@@ -142,8 +142,8 @@
               <input
                 type="submit"
                 id="boton-cuenta"
+                @click="crear"
                 value="Crear cuenta"
-                onclick="RegistroExitoso()"
               />
             </div>
           </form>
@@ -154,24 +154,81 @@
 </template>
 
 <script>
-import api from "@/logic/Api.vue";
+import api from "@/logic/Api.js";
+// import Auto from "@/logic/Autenticacion.js";
+
 export default {
-  methods: {
-    async ingresar() {
-      const usuario = document.getElementById("usuario").value;
-      const contraseña = document.getElementById("contraseña").value;
-      if (usuario === null || contraseña === null) {
-        alert("Usuario o contraseña incorrecta");
-      } else {
-        await api.obtenerUno("/listar", {
-          usuario: usuario,
-          contraseña: contraseña,
-        });
-        alert("Inicio de sesión");
-      }
-    },
+  name: "Login",
+  data: function () {
+    return {
+      entrada: "",
+    };
   },
-};
+  methods: {
+    // async ingresar() {
+    //   try {
+    //     let respuesta = await api.token({
+    //       usuario: this.entrada,
+    //     });
+    //     Auto.createToken(respuesta.data);
+    //     alert(Auto.getToken());
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // },
+
+    //API
+    async crear() {
+        var nombres = document.getElementById("nombres").value;
+        var apellidos = document.getElementById("apellidos").value;
+        var correo = document.getElementById("correo").value;
+        var usuario = document.getElementById("usuario2").value;
+        var contraseña = document.getElementById("contraseña2").value;
+        if (
+          nombres.length<3 ||
+          apellidos.length<3||
+          correo === "" ||
+          usuario.length<5||
+          contraseña.length<5
+        ) {
+          alert("Completa todos los campos para registrarse");
+        } 
+        
+        // else if(
+        //   await api.obtenerCorreo("Correo",{
+        //     correo:correo
+        //   }) 
+        // ) {
+
+        // }
+        else {
+          await api.crear("Usuario", {
+            nombres:nombres,
+            apellidos:apellidos,
+            correo:correo,
+            usuario:usuario,
+            contraseña:contraseña
+          })
+          alert("Registro exitoso");
+        }
+      },
+
+
+      async ingresar() {
+        var usuario = document.getElementById("usuario").value;
+        var contraseña = document.getElementById("contraseña").value;
+        if (usuario === "" || contraseña === "") {
+          alert("Completa todos los campos para iniciar sesion");
+        } else {
+          await api.obtenerUno("Usuario", {
+            usuario:usuario,
+            contraseña:contraseña
+          })
+          alert("Bienvenido a TAM DATABASE");
+        }
+      }
+    }
+  }
 
 </script>
 
@@ -179,7 +236,7 @@ export default {
 
 body {
   background: linear-gradient(to bottom right, #69af9d83, #fffffd8c);
-  
+
 }
 
 .iniciar_sesion {

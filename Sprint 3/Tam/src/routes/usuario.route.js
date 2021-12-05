@@ -4,8 +4,8 @@ const UsuarioCtrl= require('../controller/usuario.controller')
 const Auto = require('../helper/Auto')
 
 
-router.post('/Usuario',Auto.verificarToken, UsuarioCtrl.crear)
-router.post('/login', UsuarioCtrl.login)
+router.post('/Usuario', UsuarioCtrl.crear) //verificar token
+router.post('/login', UsuarioCtrl.login) //ingresar
 router.get('/Usuarios', UsuarioCtrl.listar)
 router.get('/Usuario/:_id', UsuarioCtrl.listarId)
 router.get('/Usuarios/Estado/:estado', UsuarioCtrl.buscarUsuarioEstado)

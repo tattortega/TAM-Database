@@ -6,16 +6,15 @@ const jwt = require('jsonwebtoken')
 //Crear usuario
 usuarioCtrl.crear = async(req,res)=>{
         try {
-        const {nombres,apellidos,correo,estado,roles_id,usuario,contraseña} = req.body
+        const {nombres,apellidos,correo,usuario,contraseña} = req.body
         const NuevoUsuario = new Usuario({
             nombres,
             apellidos,
             correo,
-            estado,
-            roles_id,
             usuario,
             contraseña
         })
+        console.log(NuevoUsuario)
 
         const correoUsuario = await Usuario.findOne({correo:correo})
         const nombreUsuario = await Usuario.findOne({usuario:usuario})
@@ -30,8 +29,8 @@ usuarioCtrl.crear = async(req,res)=>{
         }
         else{
             NuevoUsuario.contraseña = await bcrypt.hash(contraseña,10)
-            const token = jwt.sign({_id:NuevoUsuario._id},'Secreta')
-            await NuevoUsuario.save()
+            // const token = jwt.sign({_id:NuevoUsuario._id},'Secreta')
+            await NuevoUsuario.save().then(res=>{console.log(res)}).catch(err=>{console.log(err)})
             res.json({
                 mensaje:'Bienvenid@',
                 id: NuevoUsuario._id,
