@@ -6,67 +6,7 @@
     <section>
       <form class="search" action="" method="POST">
         <hr />
-        <div class="categoria1">
-          <div>
-            <label class="categ" for="search">Información Geográfica:</label>
-          </div>
-          <div>
-            <a href="NOV.xlsx">Excel</a>
-          </div>
-          <div>
-            <label><input type="checkbox" name="" id="latitud" />Latitud</label>
-          </div>
-          <div>
-            <label><input type="checkbox" name="" id="pais" />País</label>
-          </div>
-          <div>
-            <label
-              ><input type="checkbox" name="" id="localidad" />Localidad</label
-            >
-          </div>
-          <div>
-            <label
-              ><input type="checkbox" name="" id="elevacion" />Elevación
-              (mts)</label
-            >
-          </div>
-        </div>
-        <hr />
-        <div class="categoria2">
-          <div>
-            <label class="categ" for="search">Información Genética:</label>
-          </div>
-          <div>
-            <label
-              ><input type="checkbox" name="" id="genbank" />Codigo
-              Genbank</label
-            >
-          </div>
-          <div>
-            <label
-              ><input type="checkbox" name="" id="molecular" />Marcador
-              Molecular</label
-            >
-          </div>
-        </div>
-        <hr />
-        <div class="categoria3">
-          <div>
-            <label class="categ" for="search"
-              >Información Taxonómica del Ave Hospedera:</label
-            >
-          </div>
-          <div>
-            <label><input type="checkbox" name="" id="orden" />Orden</label>
-          </div>
-          <div>
-            <label><input type="checkbox" name="" id="familia" />Familia</label>
-          </div>
-          <div>
-            <label><input type="checkbox" name="" id="especie" />Especie</label>
-          </div>
-        </div>
-        <hr />
+        
         <div class="categoria4">
           <div>
             <label class="categ" for="search"
@@ -74,7 +14,11 @@
             >
           </div>
           <div>
-            <label><input type="checkbox" name="" id="genero" />Género</label>
+            <label>Género<br>
+              <input type="radio" name="genero" value="Todo" @click="Todo" id="Todo"> Todo<br>
+              <input type="radio" name="genero" value="Hemoproteus" v-on:input="entrada = $event.target.value" id="Hemoproteus"> Hemoproteus<br>
+              <input type="radio" name="genero" value="Leucocytozoon" @click="Leucocytozoon" id="Leucocytozoon"> Leucocytozoon<br>
+            </label>
           </div>
         </div>
         <hr />
@@ -84,7 +28,6 @@
           id="boton-search"
           type="submit"
           value="Buscar"
-          onclick="mensaje()"
         />
       </div>
     </section>
@@ -204,7 +147,18 @@
 
 <script>
 export default {
-  
+  // data: function(){
+  //   return{
+  //   entrada:document.getElementById('Hemoproteus').value
+  //   }
+  // },
+  // methods:{
+  //   alert(`${this.entrada} no existe`)
+
+  //   async obtenerParasitoGenero(){
+  //     //var parasito=document.getElementById
+  //   }
+  // }
 }
 </script>
 
