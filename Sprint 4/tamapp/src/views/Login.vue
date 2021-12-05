@@ -75,7 +75,7 @@
           <p><strong>Ingrese los siguientes datos para registrarse</strong></p>
         </div>
         <section>
-          <form id="form-reg" action="../Home" method="GET">
+          <form id="form-reg" action="/" method="GET">
             <div class="formulario">
               <div class="campo">
                 <input
@@ -184,24 +184,52 @@ export default {
         var correo = document.getElementById("correo").value;
         var usuario = document.getElementById("usuario2").value;
         var contraseña = document.getElementById("contraseña2").value;
-        if (
-          nombres.length<3 ||
-          apellidos.length<3||
-          correo === "" ||
-          usuario.length<5||
-          contraseña.length<5
-        ) {
-          alert("Completa todos los campos para registrarse");
-        } 
-        
-        // else if(
-        //   await api.obtenerCorreo("Correo",{
-        //     correo:correo
-        //   }) 
-        // ) {
 
-        // }
-        else {
+        if (
+
+          nombres.length<3 ||
+
+          apellidos.length<3||
+
+          correo === "" ||
+
+          usuario.length<5||
+
+          contraseña.length<5
+
+        ) {
+
+          var mensaje="Diligencie los siguientes datos:\n";
+
+          if (nombres.length<3){
+
+            mensaje=mensaje+"-Los nombres deben tener minimo 3 caracteres\n";
+
+          }
+
+          if (apellidos.length<3){
+
+            mensaje=mensaje+"-Los apellidos debe tener minimo 3 caracteres\n";
+
+          }
+
+          if (usuario.length<5){
+
+            mensaje=mensaje+"-El usuario debe tener minimo 5 caracteres\n";
+
+          }
+          
+
+          if (contraseña.length<5){
+
+            mensaje=mensaje+"-La contraseña debe tener minimo 5 caracteres\n";
+            
+
+          }
+          
+          alert(mensaje);
+  
+        } else{
           await api.crear("Usuario", {
             nombres:nombres,
             apellidos:apellidos,
@@ -209,8 +237,12 @@ export default {
             usuario:usuario,
             contraseña:contraseña
           })
-          alert("Registro exitoso");
+          alert("Registro exitoso")
         }
+
+
+            
+
       },
 
 
