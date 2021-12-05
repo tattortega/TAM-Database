@@ -14,7 +14,7 @@
             <label for="doc"
               >N° documento de identificación:
               <input
-                type="number"
+                type="text"
                 name="doc"
                 id="doc"
                 size="50"
@@ -22,9 +22,11 @@
                 min="1"
               />
             </label>
-            <label for="email"
+            <label for="email" 
               >Correo Electrónico:
-              <input type="email" name="email" id="email" size="50" required />
+              
+              <input type="email" name="email" id="email" size="50" required/>
+
             </label>
             <label for="desc"
               >Descripción de la solicitud:
@@ -38,7 +40,7 @@
             </label>
           </div>
           <br />
-          <button onclick="contactar_soporte()" type="submit">
+          <button @click="contactar" type="submit">
             <b>Enviar solicitud</b>
           </button>
         </form>
@@ -48,7 +50,38 @@
 </template>
 
 <script>
-export default {};
+
+import api from "../logic/api";//Cada 2 puntos retrocede una carpeta.
+
+  
+export default {
+  methods:{
+    
+    async contactar() {
+      const nombre = document.getElementById('nombre').value;
+      const doc_identidad = document.getElementById('doc').value;
+      const email = document.getElementById('email').value;
+      const descripción = document.getElementById('desc').value;
+        
+      if(nombre === '' || doc_identidad === '' || email === '' || descripción === ''){
+        alert("Los campos no pueden estar vacíos. Por favor digitarlos completamente para su solicitud.")
+      }
+      else{
+          await api.ingresar("Soportes",{ /*1. Se colocan los atributos como están en el modelo del backend API
+            Sprint 3, y se asigna el campo donde capturamos los datos en el DOM van en formato JSON
+            2. Los tipos de datos del DOM(Formulario) deben ser los mismos con los del backend API
+            del modelo Sprint 3 */
+            usuario: nombre,
+            identificacion: doc_identidad,
+            correo: email,
+            descripcion: descripción
+          })
+          alert("Su solicitud se envió correctamente.")
+      }
+    
+    }
+  }
+};
 </script>
 
 <style scoped>
