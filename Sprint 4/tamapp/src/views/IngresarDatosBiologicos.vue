@@ -119,7 +119,7 @@
                     subir sus datos, pues está fila de encabezado solo sirve 
                     como una guía para la organización de sus datos.
                 </p>
-                <a href="../public/EjemploFormularioDatos.xlsx" download="">Puede descargar el ejemplo del archivo .xlsx dando click aquí</a>
+                <a href="EjemploFormularioDatos.xlsx">Puede descargar el ejemplo del archivo .xlsx dando click aquí</a>
 
                 <h3>Importe un archivo</h3>
 
