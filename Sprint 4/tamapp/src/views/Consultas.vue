@@ -11,8 +11,7 @@
             <label class="categ" for="search">Información Geográfica:</label>
           </div>
           <div>
-            <input type="checkbox" v-model="terminos">terminos
-            <button v-if="terminos">Confirmar</button>
+            <a href="NOV.xlsx">Excel</a>
           </div>
           <div>
             <label><input type="checkbox" name="" id="latitud" />Latitud</label>
