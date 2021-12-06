@@ -21,8 +21,7 @@
             <FormulateInput
               id="doc"
               name="N° documento de identificación"
-              type="text"
-              size="30"
+              type="number"
               label="N° documento de identificación"
               validation="required"
             />
@@ -98,49 +97,6 @@ export default {
 </script>
 
 <style scoped>
-
-  label{
-    font-weight: bold;
-  }
-  
-  .inputs{  
-    text-align: left;
-    background-color: #fbfbfb; 
-    width: 90%; 
-    height: 40px; 
-    border-style: solid; 
-    border-width: 1px; 
-    border-color: indigo; 
-    margin-top: 10px;  
-    padding-left: 10px;
-    margin-bottom: 20px; 
-  }
-
-  .lbl{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: indigo;
-  }
-
-  .lbl input,textarea{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: indigo;
-    font-size: 20px;
-  }
-  
-  textarea{
-    background-color: #fbfbfb; 
-    width: 90%; 
-    height: 150px; 
-    border-style: solid; 
-    border-width: 1px; 
-    border-color: indigo; 
-    margin-top: 10px;  
-    padding-left: 10px;
-    margin-bottom: 20px; 
-    padding-top: 15px; 
-  }
-  
-
   
   button{
     height: 45px; 
@@ -178,7 +134,7 @@ export default {
     padding: 1em;
   }
 
-strong h3{
+h3{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 25px;
   color: indigo;
