@@ -25,7 +25,7 @@
             <label for="email" 
               >Correo Electrónico:
               
-              <input type="email" name="email" id="email" size="50" placeholder="correo@gmail.com" required/>
+            <input type="email" name="email" id="email" size="50" placeholder="correo@gmail.com" required/>
 
             </label>
             <label for="desc"
@@ -62,9 +62,9 @@ export default {
       const doc_identidad = document.getElementById('doc').value;
       const email = document.getElementById('email').value;
       const descripción = document.getElementById('desc').value;
-        
+      
       if(nombre === '' || doc_identidad === '' || email === '' || descripción === ''){
-        alert("Los campos no pueden estar vacíos. Por favor digitarlos completamente para su solicitud.")
+        alert("Los campos no pueden estar vacíos. Por favor digitelos completamente para enviar su solicitud.")
       }
       else{
           await api.ingresar("Soportes",{ /*1. Se colocan los atributos como están en el modelo del backend API
@@ -77,6 +77,7 @@ export default {
             descripcion: descripción
           })
           alert("Su solicitud se envió correctamente.")
+           
       }
     
     }
