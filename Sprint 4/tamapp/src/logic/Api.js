@@ -19,13 +19,13 @@ export default {
     },
 
     obtenerUsuario(subdir){
-        const ax1 = `${API}/Usuarios${subdir}`;
+        const ax1 = `${API}/Usuarios/Usuario/${subdir}`;
         return axios.get(ax1);
     },
 
-    obtenerCorreo(subdir, objeto){
-        const ax1 = `${API}/Usuarios${subdir}`;
-        return axios.get(ax1, objeto);
+    obtenerCorreo(subdir){
+        const ax1 = `${API}/Usuarios/Correo/${subdir}`;
+        return axios.get(ax1);
     },
 
 

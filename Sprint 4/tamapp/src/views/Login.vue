@@ -68,85 +68,84 @@
       <div class="container">
         <header class="header">
           <a href="#" class="close-modal">X</a>
-          <h1>REGÍSTRATE</h1>
+          <h1>REGISTRATE</h1>
         </header>
         <hr />
         <div>
           <p><strong>Ingrese los siguientes datos para registrarse</strong></p>
         </div>
         <section>
-          <form id="form-reg" action="/" method="GET">
+          <FormulateForm
+              action="/"
+              class="login-form"
+              v-model="formValues"
+            >
             <div class="formulario">
-              <div class="campo">
-                <input
-                  class="input"
+              <div class="campo">                
+                <FormulateInput 
+                  type="text"
+                  size="30"         
                   id="nombres"
-                  type="text"
-                  placeholder="Nombres"
-                  size="30"
-                  minlength="3"
-                  maxlength="30"
-                  required
+                  name="nombre"
+                  placeholder="Nombre"
+                  class="input"
+                  validation="required"
                 />
               </div>
               <div class="campo">
-                <input
-                  class="input"
+                <FormulateInput 
+                  type="text"
+                  size="30"         
                   id="apellidos"
-                  type="text"
-                  placeholder="Apellidos"
-                  size="30"
-                  minlength="3"
-                  maxlength="30"
-                  required
+                  name="apellido"
+                  placeholder="Apellido"
+                  class="input"
+                  validation="required"
                 />
               </div>
               <div class="campo">
-                <input
-                  class="input"
-                  id="correo"
+                <FormulateInput
                   type="email"
+                  size="30"         
+                  id="correo"
+                  name="correo electrónico"
                   placeholder="Correo electrónico"
-                  size="30"
-                  required
+                  class="input"
+                  validation="required|email"
                 />
               </div>
               <div class="campo">
-                <input
-                  class="input"
-                  id="usuario2"
+                <FormulateInput
                   type="text"
+                  size="30"         
+                  id="usuario2"
+                  name="usuario"
                   placeholder="Usuario"
-                  size="30"
-                  minlength="5"
-                  maxlength="20"
-                  required
-                  pattern="[.A-Za-z0-9]+"
+                  class="input"
+                  validation="required"
+                />
+              </div>
+              <div class="campo">
+                <FormulateInput
+                  type="password"
+                  size="30"         
+                  id="contraseña2"
+                  name="contraseña"
+                  placeholder="Contraseña"
+                  class="input"
+                  validation="required"
                 />
               </div>
               <div class="campo">
                 <input
-                  class="input"
-                  id="contraseña2"
-                  type="password"
-                  placeholder="Contraseña"
-                  size="30"
-                  minlength="5"
-                  maxlength="20"
-                  required
-                  pattern="[.A-Za-z0-9]+"
+                  type="submit"
+                  id="boton-cuenta"
+                  @click="crear"
+                  value="Crear cuenta"
                 />
               </div>
-            </div>
-            <div class="campo">
-              <input
-                type="submit"
-                id="boton-cuenta"
-                @click="crear"
-                value="Crear cuenta"
-              />
-            </div>
-          </form>
+              </div>
+          </FormulateForm>                  
         </section>
       </div>
     </aside>
@@ -154,16 +153,18 @@
 </template>
 
 <script>
-import api from "@/logic/Api.js";
+
+import api from "@/logic/Api.js"; 
 // import Auto from "@/logic/Autenticacion.js";
 
 export default {
   name: "Login",
-  data: function () {
+  data () {
     return {
-      entrada: "",
-    };
-  },
+      formValues: {}
+    }
+  }
+  ,
   methods: {
     // async ingresar() {
     //   try {
@@ -185,57 +186,39 @@ export default {
         var usuario = document.getElementById("usuario2").value;
         var contraseña = document.getElementById("contraseña2").value;
 
-        if (
+        const correorepetido = await api.obtenerCorreo(correo)
+        console.log(correorepetido)
+        
+        const usuariorepetido = await api.obtenerUsuario(usuario)
+        console.log(usuariorepetido)        
 
-          nombres.length<3 ||
+        var mensaje="Diligencie los siguientes datos:\n";
 
-          apellidos.length<3||
-
-          correo === "" ||
-
-          usuario.length<5||
-
-          contraseña.length<5
-
-        ) {
-
-          var mensaje="Diligencie los siguientes datos:\n";
-
-          if (nombres.length<3){
-
-            mensaje=mensaje+"-Los nombres deben tener minimo 3 caracteres\n";
-
+          if (nombres.length<3 || nombres===""){
+            alert(mensaje=mensaje+"-Los nombres deben tener minimo 3 caracteres\n");
           }
 
-          if (apellidos.length<3){
-
-            mensaje=mensaje+"-Los apellidos debe tener minimo 3 caracteres\n";
-
-          }
-
-          if (correo){value => {if(value.length > 0) {
-            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return pattern.test(value) || 'Invalid e-mail.';
-            }}
-          }
-
-          if (usuario.length<5){
-
-            mensaje=mensaje+"-El usuario debe tener minimo 5 caracteres\n";
-
+          else if (apellidos.length<3){
+            alert(mensaje=mensaje+"-Los apellidos debe tener minimo 3 caracteres\n");
           }
           
+          else if(correorepetido.data[0]!=undefined && correorepetido.data[0].correo == correo){
+                alert(mensaje=mensaje+"-Este correo ya ha sido registrado\n");
+            }
 
-          if (contraseña.length<5){
+          else if (usuario.length<5){
+            alert(mensaje=mensaje+"-El usuario debe tener minimo 5 caracteres\n");
+          }
 
-            mensaje=mensaje+"-La contraseña debe tener minimo 5 caracteres\n";
-            
-
+          else if(usuariorepetido.data[0]!=undefined && usuariorepetido.data[0].usuario == usuario){
+                alert(mensaje=mensaje+"-Este usuario ya ha sido registrado\n");
           }
           
-          alert(mensaje);
-  
-        } else{
+          else if (contraseña.length<5){
+            alert(mensaje=mensaje+"-La contraseña debe tener minimo 5 caracteres\n");            
+        } 
+        
+        else{
           await api.crear("Usuario", {
             nombres:nombres,
             apellidos:apellidos,
@@ -245,10 +228,6 @@ export default {
           })
           alert("Registro exitoso")
         }
-
-
-            
-
       },
 
 
@@ -270,7 +249,7 @@ export default {
 
 </script>
 
-<style scope>
+<style>
 
 body {
   background: linear-gradient(to bottom right, #69af9d83, #fffffd8c);
@@ -499,6 +478,7 @@ Estilo para el checkbox también*/
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 6px;
   padding: 1.2em;
+  padding-bottom: 0;
   text-align: center;
 }
 
@@ -533,7 +513,7 @@ Estilo para el checkbox también*/
 }
 
 .modal:target .container {
-  top: 40px;
+  top: 20px;
   transition: top 0.35s ease;
 }
 
@@ -542,11 +522,13 @@ Estilo para el checkbox también*/
 h1 {
   color: indigo;
   font-size: 1.5em;
+  margin: 0;
 }
 
 p {
   color: indigo;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
+  margin-top: 0;
 }
 
 .formulario {
@@ -557,13 +539,17 @@ p {
 .input {
   padding: 0.2em;
   font-size: 1em;
-  padding-right: 2em;
+  size: 30;
   color: indigo;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+.formulate-input-error {
+  font-size: 0.8em;
+}
 
 .campo {
-  padding-top: 0.3em;
+  padding-top: 0.1em;
+  text-align: center;
 }
 
 #boton-cuenta {
@@ -584,4 +570,11 @@ p {
 #boton-cuenta:hover {
   background-color: rgba(35, 0, 130, 0.452);
 }
+
+.formulate-input-errors{
+  padding: 0;
+  margin: 0;
+}
+
+
 </style>
