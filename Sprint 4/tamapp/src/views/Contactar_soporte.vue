@@ -1,7 +1,69 @@
 <template>
   <div class="main">
     <section class="section">
-        <FormulateForm
+      <div>
+            <h3>ENVIA TU SOLICITUD</h3>
+      </div>
+      <FormulateForm
+              action="/"
+              class="login-form"
+              v-model="formValues"
+            >
+            <div class="formulario">
+              <div class="campo">                
+                <FormulateInput 
+                  type="text"
+                  size="30"         
+                  id="nombre"
+                  name="nombre"
+                  label="Nombre completo"
+                  class="input"
+                  validation="required"
+                />
+              </div>
+              <div class="campo">
+                <FormulateInput 
+                  type="number" 
+                  size="30"         
+                  id="doc"
+                  name="N° documento de identificación"
+                  label="N° documento de identificación"
+                  class="input"
+                  validation="required"
+                />
+              </div>
+              <div class="campo">
+                <FormulateInput
+                  type="email"
+                  size="30"         
+                  id="email"
+                  name="correo electrónico"
+                  label="Correo electrónico"
+                  class="input"
+                  validation="required|email"
+                />
+              </div>
+              <div class="campo">
+                <FormulateInput
+                  type="textarea"
+                  cols="35"
+                  rows="10"
+                  size="30"         
+                  id="desc"
+                  name="descripcion"
+                  label="Descripcion"
+                  class="input"
+                  validation="required"
+                />
+              </div>
+              <div class="campo">
+               <button @click="contactar" type="submit">
+                <b>Enviar solicitud</b>
+              </button>  
+              </div>
+              </div>
+      </FormulateForm>                  
+        <!-- <FormulateForm
             class="login-form"
             v-model="formValues">
           <div>
@@ -38,6 +100,7 @@
           </div>
           <div>
             <FormulateInput
+                id="desc"
                 name="descripcion de la solicitud"
                 type="textarea"
                 cols="35"
@@ -50,7 +113,7 @@
                 <b>Enviar solicitud</b>
               </button>        
 
-      </FormulateForm>
+      </FormulateForm> -->
     </section>
   </div>
 </template>
