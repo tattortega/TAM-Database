@@ -213,6 +213,12 @@ export default {
 
           }
 
+          if (correo){value => {if(value.length > 0) {
+            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return pattern.test(value) || 'Invalid e-mail.';
+            }}
+          }
+
           if (usuario.length<5){
 
             mensaje=mensaje+"-El usuario debe tener minimo 5 caracteres\n";
