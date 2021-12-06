@@ -1,50 +1,57 @@
 <template>
   <div class="main">
     <section class="section">
-      <div>
-        <form action="contactar_soporte.html" method="POST">
-          <strong>
-            <h3>ENVÍA TU SOLICITUD</h3>
-          </strong>
-          <div class="lbl">
-            <label for="nombre"
-              >Nombre completo:
-              <input type="text" name="nombre" id="nombre" size="50" required />
-            </label>
-            <label for="doc"
-              >N° documento de identificación:
-              <input
-                type="text"
-                name="doc"
-                id="doc"
-                size="50"
-                required
-                min="1"
-              />
-            </label>
-            <label for="email" 
-              >Correo Electrónico:
-              
-            <input type="email" name="email" id="email" size="50" placeholder="correo@gmail.com" required/>
-
-            </label>
-            <label for="desc"
-              >Descripción de la solicitud:
-              <textarea
-                name="desc"
-                cols="52"
-                rows="10"
-                id="desc"
-                required
-              ></textarea>
-            </label>
+        <FormulateForm
+            class="login-form"
+            v-model="formValues">
+          <div>
+            <h3>ENVIA TU SOLICITUD</h3>
           </div>
-          <br />
-          <button @click="contactar" type="submit">
-            <b>Enviar solicitud</b>
-          </button>
-        </form>
-      </div>
+          <div class="inputs">
+            <FormulateInput
+              id="nombre"
+              name="nombre"
+              type="text"
+              size="30"
+              label="Nombre completo"
+              validation="required"
+            />
+          </div>
+          <div>
+            <FormulateInput
+              id="doc"
+              name="N° documento de identificación"
+              type="text"
+              size="30"
+              label="N° documento de identificación"
+              validation="required"
+            />
+          </div>
+          <div>
+            <FormulateInput
+                id="email"
+                name="correo electronico"
+                type="email"
+                size="30"
+                label="Correo electronico"
+                validation="required|email"
+              />
+          </div>
+          <div>
+            <FormulateInput
+                name="descripcion de la solicitud"
+                type="textarea"
+                cols="35"
+                rows="10"
+                label="Descripcion de la solicitud"
+                validation="required"
+              />
+          </div>
+              <button @click="contactar" type="submit">
+                <b>Enviar solicitud</b>
+              </button>        
+
+      </FormulateForm>
     </section>
   </div>
 </template>
@@ -55,6 +62,11 @@ import api from "../logic/api";//Cada 2 puntos retrocede una carpeta.
 
   
 export default {
+  data () {
+    return {
+      formValues: {}
+    }
+  },
   methods:{
     
     async contactar() {
@@ -87,11 +99,11 @@ export default {
 
 <style scoped>
 
-  a:hover{
-      color: rgb(226, 238, 55);
+  label{
+    font-weight: bold;
   }
   
-  input{  
+  .inputs{  
     text-align: left;
     background-color: #fbfbfb; 
     width: 90%; 
@@ -104,7 +116,7 @@ export default {
     margin-bottom: 20px; 
   }
 
-  .lbl label{
+  .lbl{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: indigo;
   }
@@ -112,10 +124,6 @@ export default {
   .lbl input,textarea{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: indigo;
-    font-size: 20px;
-  }
-  ::placeholder{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
   }
   
@@ -132,15 +140,7 @@ export default {
     padding-top: 15px; 
   }
   
-  label{
-    display: block; 
-    float: center; 
-    padding: 1px; 
-    margin: 1px; 
-    font-size: 20px;
-    text-align: left;
-    padding-left: 15px;
-  }
+
   
   button{
     height: 45px; 
@@ -183,4 +183,5 @@ strong h3{
   font-size: 25px;
   color: indigo;
 }
+
 </style>
