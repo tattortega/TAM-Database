@@ -25,7 +25,7 @@
             <label for="email" 
               >Correo Electrónico:
               
-              <input type="email" name="email" id="email" size="50" required/>
+              <input type="email" name="email" id="email" size="50" placeholder="correo@gmail.com" required/>
 
             </label>
             <label for="desc"
@@ -111,6 +111,10 @@ export default {
   .lbl input,textarea{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: indigo;
+    font-size: 20px;
+  }
+  ::placeholder{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
   }
   
