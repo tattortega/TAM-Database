@@ -2,15 +2,15 @@
       <main>
           <NavBarLogin/>
             <p class="parrafo">
-                A continuacion usted podrá ingresar los datos biologicos para
-                registrarlos en la plataforma.
+                A continuación usted podrá ingresar los datos biologicos para
+                registrarlos en la base de datos.
             </p>
     
 
     <form action="/IngresarDatosBiologicos" >
         <div class="grid-container1">
             <div class="grid-item">
-                <h2>Ingrese datos manualmente</h2>
+                <h2>Ingrese datos manualmente:</h2>
             </div>
             <div class="grid-item"></div>
 
@@ -410,7 +410,7 @@ input[type=number]{
     border-color: indigo;
     margin: 2em;
     margin-top: 3em;
-    margin-bottom: 3em;
+    margin-bottom: 5em;
     padding: 1em;
     padding-left: 65px;
     align-items: center;
