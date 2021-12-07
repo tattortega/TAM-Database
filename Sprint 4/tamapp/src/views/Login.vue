@@ -249,15 +249,15 @@ export default {
            alert("Completa todos los campos para iniciar sesion");
         } 
 
-        const usuariovalido = await api.obtenerLogin({usuario,contraseña})
+        const usuariovalido = await api.obtenerLogin({usuario:usuario,contraseña:contraseña})
         console.log(usuariovalido)
 
-        if(usuariovalido.data[0]==undefined || usuariovalido.data[0].usuario != usuario){
+        if(usuariovalido.data==undefined || usuariovalido.data.nombres != nombres){
                 alert(mensaje=mensaje+"-El usuario no se encuentra registrado\n");
             } 
-            else if (usuariovalido.data[0].contraseña != contraseña){
-              alert(mensaje=mensaje+"-La contraseña es incorrecta\n");
-            }
+            // else if (usuariovalido.data.contraseña != contraseña){
+            //   alert(mensaje=mensaje+"-La contraseña es incorrecta\n");
+            // }
             else{
               // this.usuario:usuariovalido.data[0].usuario
               // this.contraseña:usuariovalido.data[0].contraseña
@@ -277,7 +277,7 @@ export default {
     //   } catch (err) {
     //     console.error(err);
     //   }
-    // },
+    // }, 
 
 </script>
 

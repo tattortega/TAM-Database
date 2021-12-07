@@ -18,9 +18,9 @@ export default {
         return axios.get(ax1);
     },
 
-    obtenerLogin(subdir,dato){
-        const ax1 = `${API}/login/${subdir}`;
-        return axios.get(ax1,dato);
+    obtenerLogin(dato){
+        const ax1 = `${API}/login/`;
+        return axios.post(ax1,dato);
     },
 
     obtenerCorreo(subdir){

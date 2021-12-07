@@ -62,9 +62,6 @@ usuarioCtrl.login = async(req,res)=>{
         if(match){
             const token =jwt.sign({_id: validarUsuario._id}, 'Secreta')
             res.json({
-                mensaje:'Inicio de sesión exitoso',
-                id: validarUsuario.id,
-                nombres: validarUsuario.nombres,
                 token
             })
         }
