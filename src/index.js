@@ -8,8 +8,19 @@ require('dotenv').config()
 require('./database')
 
 //voy a configurar el puerto
-
 app.use(cors({origen:'*'}))
+
+app.use((req, res, next) => {
+    // Dominio que tengan acceso (ej. 'http://example.com')
+       res.setHeader('Access-Control-Allow-Origin', '*');    
+    // Metodos de solicitud que deseas permitir
+       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');    
+    // Encabecedados que permites (ej. 'X-Requested-With,content-type')
+       res.setHeader('Access-Control-Allow-Headers', '*');    
+    next();
+})
+
+
 app.set('Port', process.env.PORT || 4000)
 app.use(morgan('dev'))
 app.use(bodyparser.urlencoded({extended:true}))
