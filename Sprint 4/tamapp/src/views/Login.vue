@@ -118,7 +118,7 @@
                   type="submit"
                   id="boton-cuenta"
                   @click="crear"
-                  value="Crear cuenta"
+                  value="Crear cuenta"  
                 />
               </div>
             </div>
@@ -193,9 +193,9 @@ export default {
             contraseña:contraseña
           })
           alert("Registro exitoso")
-          this.$router.push(-1)
-        }
-      },
+          window.location= "http://localhost:8080/"
+      }
+  },
 
 
       async ingresar() {
@@ -218,6 +218,7 @@ export default {
         }           
         else{
               alert("Bienvenido a TAM DATABASE")
+              window.location = "http://localhost:8080/IngresoDatosBiologicos"
         }
       } 
   }       
@@ -420,7 +421,7 @@ Estilo para el checkbox también*/
   top: -100vh;
   left: 0;
   z-index: 99999999;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.90);
   width: 900vw;
   height: 100vh;
   opacity: 0;
@@ -469,7 +470,7 @@ Estilo para el checkbox también*/
 }
 
 .modal:target .container {
-  top: 20px;
+  top: 5px;
   transition: top 0.35s ease;
 }
 
@@ -493,7 +494,7 @@ p {
 }
 
 .input {
-  padding: 0.2em;
+  padding: 0.1em;
   margin-bottom: 10px;
   font-size: 1em;
   size: 30;

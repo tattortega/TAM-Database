@@ -15,8 +15,10 @@ Auto.isToken =()=>{
         return true
     }else{
        return false
-    }
-    
+    }    
 }
 
+Auto.limpiar = ()=>{
+    localStorage.clear();
+}
 module.exports = Auto;
