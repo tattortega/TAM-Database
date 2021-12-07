@@ -1,5 +1,5 @@
 const usuarioCtrl={}
-const Usuario = require('../models/Usuario.model')
+const Usuario = require('../models/usuario.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { response } = require('express')
