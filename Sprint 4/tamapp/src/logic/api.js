@@ -20,4 +20,10 @@ export default{
         const ax1 = `${API}/DatosBiologicos/genero_parasito/${subdir}`;
         return axios.get(ax1);
     },
+
+    //Metodo ingresar datos biologicos
+    ingresarDatosBiologicos(subdir,objeto){
+        const ax1 = `${API}/${subdir}`;
+        return axios.post(ax1,objeto);
+    }
 }

@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Contactar_soporte from "../views/Contactar_soporte.vue"
 import Consultas from "../views/Consultas.vue";
+import IngresarDatosBiologicos from "../views/IngresarDatosBiologicos.vue";
+
 
 Vue.use(VueRouter);
 
@@ -23,6 +25,12 @@ const routes = [
     path: "/Consultas",
     name: "Consultas",
     component: Consultas,
+  },
+
+  {
+    path: "/IngresarDatosBiologicos",
+    name: "IngresarDatosBiologicos",
+    component: IngresarDatosBiologicos,
   }
 
 ];
