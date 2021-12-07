@@ -1,33 +1,45 @@
 <template>
   <main>
     <div class="desc-search">
-      <p>Realice una busqueda por filtros:</p>
+      <p>
+        Realice una busqueda por filtros:
+      </p>
     </div>
     <section>
       <form class="search" action="" method="POST">
-        <hr />
-        
-        <div class="categoria4">
+        <hr/>
+        <div class="categoria">
           <div>
-            <label class="categ" for="search"
-              >Información Taxonómica del Parásito:</label
-            >
-          </div>
-          <div>
-            <label>Género<br>
-              <input type="radio" name="genero" value="Todo" @click="Todo" id="Todo"> Todo<br>
-              <input type="radio" name="genero" value="Hemoproteus" v-on:input="entrada = $event.target.value" id="Hemoproteus"> Hemoproteus<br>
-              <input type="radio" name="genero" value="Leucocytozoon" @click="Leucocytozoon" id="Leucocytozoon"> Leucocytozoon<br>
+            <label class="categ" for="search">
+              Información Taxonómica del Parásito:
             </label>
           </div>
+          <div>
+            Género<br>
+            <select v-model="genero" name="genero" id="genero" required>
+              <option value="Todo">Todo</option>
+              <option value="Haemoproteus">Haemoproteus</option>
+              <option value="Leucocytozoon">Leucocytozoon</option>
+              <option value="Plasmodium">Plasmodium</option>
+            </select>
+            <!-- <FormulateInput
+              @change="onChange($event)"
+              v-model="value"
+              :options="{Todo: 'Todo', Hemoproteus: 'Hemoproteus', Leucocytozoon: 'Leucocytozoon'}"
+              type="select"
+              placeholder="Seleccione una opción"
+              label="Género"
+            /> -->
+          </div>
         </div>
-        <hr />
+        <hr/>
       </form>
       <div class="boton-search">
         <input
           id="boton-search"
           type="submit"
           value="Buscar"
+          @click="buscar"
         />
       </div>
     </section>
@@ -50,116 +62,74 @@
               <th>Referencia</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody v-if="!info.length">
             <tr>
-              <td>-0,599</td>
-              <td>-77,89</td>
-              <td>Ecuador</td>
-              <td>Cerro Bosco</td>
-              <td>2177</td>
-              <td>KJ661265</td>
-              <td>cytb</td>
-              <td>Passeriformes</td>
-              <td>Thraupidae</td>
-              <td>Diglossa cyanea</td>
-              <td>Haemoproteus sp.</td>
-              <td>(Harrigan et al., 2014)</td>
-            </tr>
-            <tr>
-              <td>-0,599</td>
-              <td>-77,89</td>
-              <td>Ecuador</td>
-              <td>Cerro Bosco</td>
-              <td>2177</td>
-              <td>KJ661265</td>
-              <td>cytb</td>
-              <td>Passeriformes</td>
-              <td>Thraupidae</td>
-              <td>Diglossa cyanea</td>
-              <td>Haemoproteus sp.</td>
-              <td>(Harrigan et al., 2014)</td>
-            </tr>
-            <tr>
-              <td>-0,599</td>
-              <td>-77,89</td>
-              <td>Ecuador</td>
-              <td>Cerro Bosco</td>
-              <td>2177</td>
-              <td>KJ661265</td>
-              <td>cytb</td>
-              <td>Passeriformes</td>
-              <td>Thraupidae</td>
-              <td>Diglossa cyanea</td>
-              <td>Haemoproteus sp.</td>
-              <td>(Harrigan et al., 2014)</td>
-            </tr>
-            <tr>
-              <td>-0,599</td>
-              <td>-77,89</td>
-              <td>Ecuador</td>
-              <td>Cerro Bosco</td>
-              <td>2177</td>
-              <td>KJ661265</td>
-              <td>cytb</td>
-              <td>Passeriformes</td>
-              <td>Thraupidae</td>
-              <td>Diglossa cyanea</td>
-              <td>Haemoproteus sp.</td>
-              <td>(Harrigan et al., 2014)</td>
-            </tr>
-            <tr>
-              <td>-0,599</td>
-              <td>-77,89</td>
-              <td>Ecuador</td>
-              <td>Cerro Bosco</td>
-              <td>2177</td>
-              <td>KJ661265</td>
-              <td>cytb</td>
-              <td>Passeriformes</td>
-              <td>Thraupidae</td>
-              <td>Diglossa cyanea</td>
-              <td>Haemoproteus sp.</td>
-              <td>(Harrigan et al., 2014)</td>
-            </tr>
-            <tr>
-              <td>-0,599</td>
-              <td>-77,89</td>
-              <td>Ecuador</td>
-              <td>Cerro Bosco</td>
-              <td>2177</td>
-              <td>KJ661265</td>
-              <td>cytb</td>
-              <td>Passeriformes</td>
-              <td>Thraupidae</td>
-              <td>Diglossa cyanea</td>
-              <td>Haemoproteus sp.</td>
-              <td>(Harrigan et al., 2014)</td>
+              <td colspan="12">{{info.mensaje}}</td>
             </tr>
           </tbody>
+          <tbody v-for="(valor) in info" :key="valor._id" v-else>
+            <Tabla 
+            :genero_parasito="valor.genero_parasito" 
+            :especie="valor.especie" 
+            :latitud="valor.latitud"
+            :longitud="valor.longitud"
+            :id_pais="valor.id_pais"
+            :localidad="valor.localidad"
+            :elevacion="valor.elevacion"
+            :bibliographic_ref="valor.bibliographic_ref"
+            :codigo_genbank="valor.codigo_genbank"
+            :marcador_molecular="valor.marcador_molecular"
+            :orden="valor.orden"
+            :familia="valor.familia"
+
+            :mensaje="valor.mensaje"
+            />
+          </tbody>
         </table>
+       
       </div>
-      <div class="boton-download">
+      <!-- <div class="boton-download">
         <button id="boton-download">Descargar informes</button>
-      </div>
+      </div> -->
     </section>
   </main>
 </template>
 
 <script>
-export default {
-  // data: function(){
-  //   return{
-  //   entrada:document.getElementById('Hemoproteus').value
-  //   }
-  // },
-  // methods:{
-  //   alert(`${this.entrada} no existe`)
+// @ is an alias to /src
+import api from "@/logic/api"
+import Tabla from "@/components/Tabla.vue"
+  export default {
+    components: {
+      Tabla
+    },
+    data:function(){
+      return {
+        info:[],
+      }
+    },
+    methods: {
+        async buscar(){
+          const opc=document.getElementById('genero').value
+          console.log('El valor es: ',opc)
+          var resultado=""
+          
+          if(opc=='Todo'){
+            resultado= await api.obtenerTodo("DatosBiologicos")
+          }else{
+            resultado= await api.obtenerParasitoGenero(opc)
+          }
+          this.info=resultado.data
 
-  //   async obtenerParasitoGenero(){
-  //     //var parasito=document.getElementById
-  //   }
-  // }
-}
+          // if(resultado.data.mensaje){
+          //   alert(resultado.data.mensaje)  
+          // }else{
+          //   alert(resultado.data)  
+          // }
+          // console.log(resultado)
+        }
+    }
+  }
 </script>
 
 <style>
@@ -190,22 +160,10 @@ export default {
   flex-direction: row;
   padding: 1em;
   padding-left: 2em}
-.categoria1 {
-  padding: 0;
-  padding-left: 1em;
-  width: 240px}
-.categoria2 {
+.categoria {
   padding-left: 1em;
   padding-right: 1em;
-  width: 227px}
-.categoria3 {
-  padding-left: 1em;
-  padding-right: 1em;
-  width: 269px}
-.categoria4 {
-  padding-left: 1em;
-  padding-right: 1em;
-  width: 269px}
+  width: 500px}
 .categ {
   font-weight: bold}
 hr {

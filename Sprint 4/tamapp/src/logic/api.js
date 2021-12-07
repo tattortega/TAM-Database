@@ -9,9 +9,9 @@ export default{
         return axios.get(ax1);
     },
 
-    obtenerParasitoGenero(subdir,objeto){
-        const ax1 = `${API}/DatosBiologicos${subdir}`;
-        return (axios.get(ax1),objeto);
+    obtenerParasitoGenero(subdir){
+        const ax1 = `${API}/DatosBiologicos/genero_parasito/${subdir}`;
+        return axios.get(ax1);
     },
 
 }
