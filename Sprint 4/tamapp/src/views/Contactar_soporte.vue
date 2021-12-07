@@ -5,9 +5,9 @@
             <h3>ENVIA TU SOLICITUD</h3>
       </div>
       <FormulateForm
-              action="/"
               class="login-form"
               v-model="formValues"
+              name="soporte"
             >
             <div class="formulario">
               <div class="campo">                
@@ -17,13 +17,13 @@
                   id="nombre"
                   name="nombre"
                   label="Nombre completo"
-                  class="input"
+                  class="input formulate-input"
                   validation="required"
                 />
               </div>
               <div class="campo">
                 <FormulateInput 
-                  type="number" 
+                  type="text" 
                   size="30"         
                   id="doc"
                   name="N° documento de identificación"
@@ -46,7 +46,7 @@
               <div class="campo">
                 <FormulateInput
                   type="textarea"
-                  cols="35"
+                  cols="33"
                   rows="10"
                   size="30"         
                   id="desc"
@@ -57,63 +57,15 @@
                 />
               </div>
               <div class="campo">
-               <button @click="contactar" type="submit">
-                <b>Enviar solicitud</b>
-              </button>  
+                <FormulateInput
+                type="submit"
+                label="Enviar solicitud"
+                data-ghost
+                @click="contactar"
+              />
               </div>
               </div>
       </FormulateForm>                  
-        <!-- <FormulateForm
-            class="login-form"
-            v-model="formValues">
-          <div>
-            <h3>ENVIA TU SOLICITUD</h3>
-          </div>
-          <div class="inputs">
-            <FormulateInput
-              id="nombre"
-              name="nombre"
-              type="text"
-              size="30"
-              label="Nombre completo"
-              validation="required"
-            />
-          </div>
-          <div>
-            <FormulateInput
-              id="doc"
-              name="N° documento de identificación"
-              type="number"
-              label="N° documento de identificación"
-              validation="required"
-            />
-          </div>
-          <div>
-            <FormulateInput
-                id="email"
-                name="correo electronico"
-                type="email"
-                size="30"
-                label="Correo electronico"
-                validation="required|email"
-              />
-          </div>
-          <div>
-            <FormulateInput
-                id="desc"
-                name="descripcion de la solicitud"
-                type="textarea"
-                cols="35"
-                rows="10"
-                label="Descripcion de la solicitud"
-                validation="required"
-              />
-          </div>
-              <button @click="contactar" type="submit">
-                <b>Enviar solicitud</b>
-              </button>        
-
-      </FormulateForm> -->
     </section>
   </div>
 </template>
@@ -136,10 +88,16 @@ export default {
       const doc_identidad = document.getElementById('doc').value;
       const email = document.getElementById('email').value;
       const descripción = document.getElementById('desc').value;
+      const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
       
-      if(nombre === '' || doc_identidad === '' || email === '' || descripción === ''){
+      if(nombre === '' || doc_identidad === '' || descripción === ''){
         alert("Los campos no pueden estar vacíos. Por favor digitelos completamente para enviar su solicitud.")
+
       }
+      
+      if (!emailRegex.test(email)) {
+        alert("Por favor introduzca un correo electrónico válido.")
+      }   
       else{
           await api.ingresar("Soportes",{ /*1. Se colocan los atributos como están en el modelo del backend API
             Sprint 3, y se asigna el campo donde capturamos los datos en el DOM van en formato JSON
@@ -151,16 +109,41 @@ export default {
             descripcion: descripción
           })
           alert("Su solicitud se envió correctamente.")
-           
+          this.$formulate.reset('soporte')         
       }
-    
     }
   }
 };
 </script>
 
-<style scoped>
+<style >
   
+.formulate-input-errors{
+  padding: 0;
+  margin: 0;
+}
+
+.formulario {
+  text-align: left;
+  padding: 10px;
+}
+
+.input {
+  padding: 0.2em;
+  font-size: 1em;
+  size: 30;
+  color: indigo;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.formulate-input-error {
+  font-size: 0.8em;
+}
+
+.campo {
+  padding-top: 0.1em;
+  text-align: center;
+}
+
   button{
     height: 45px; 
     padding-top: -150px; 
@@ -172,7 +155,9 @@ export default {
     cursor: pointer;    
   }
 
-
+.formulate-input-element--submit--label{
+  color: white;
+}
   button:hover{
     background-color: rgba(35, 0, 130, 0.178);
   }
