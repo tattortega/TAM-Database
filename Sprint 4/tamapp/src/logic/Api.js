@@ -13,8 +13,8 @@ export default {
         return axios.post(ax1,objeto);
     },
 
-    obtenerUno(subdir){
-        const ax1 = `${API}/${subdir}`;
+    obtenerUsuario(subdir){
+        const ax1 = `${API}/Usuarios/Usuario/${subdir}`;
         return axios.get(ax1);
     },
 

@@ -62,14 +62,17 @@ usuarioCtrl.login = async(req,res)=>{
         if(match){
             const token =jwt.sign({_id: validarUsuario._id}, 'Secreta')
             res.json({
+                usuario: validarUsuario.usuario,
+                contraseña: validarUsuario.contraseña,
                 token
-            })
+            })           
         }
         else{
             res.json({
-                mensaje:'Contraseña incorrecta'
+                mensaje2:'Contraseña incorrecta'
             })
         }
+        console.log(validarUsuario)
             
     } catch (error) {
         res.json({

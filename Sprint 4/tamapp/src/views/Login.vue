@@ -37,56 +37,13 @@
               v-on:input="contraseña = $event.target.value"
             />
           </div>
-          <div id="br">
-            <a href="../recuperar_usuario" id="link"
-              >Recuperar usuario y/o contraseña</a>
-          </div>
           <div class="ubicar">
             <button id="button" @click="ingresar"><b>Ingresar</b></button>
             <a id="button2" href="#modal"><label>Regístrate </label></a>
           </div>
       </FormulateForm>
     </section>
-        <!-- <div id="check_div" class="inputs">
-            <FormulateInput
-              v-model="value"
-              type="checkbox"
-              label="Mantener sesion iniciada"
-            />
-        </div> -->
-
-        <!-- <form action="" method="GET">
-        <div class="msje_inicia_sesion">
-          <h3>INICIAR SESION</h3>
-        </div>
-        <hr />
-        <div class="campos">
-          <input
-            class="inputs"
-            id="usuario"
-            type="text"
-            placeholder="Usuario"
-            size="30"
-            minlength="5"
-            maxlength="20"
-            required
-            pattern="[.A-Za-z0-9]+"
-          />
-        </div>
-        <div class="campos">
-          <input
-            class="inputs"
-            id="contraseña"
-            type="password"
-            placeholder="Contraseña"
-            size="30"
-            minlength="5"
-            maxlength="20"
-            required
-            pattern="[.A-Za-z0-9]+"
-          />
-        </div> -->
-
+        
     <!--Formulario de Registro-->
     <aside id="modal" class="modal">
       <div class="container">
@@ -236,6 +193,7 @@ export default {
             contraseña:contraseña
           })
           alert("Registro exitoso")
+          this.$router.push(-1)
         }
       },
 
@@ -245,23 +203,21 @@ export default {
         const contraseña = document.getElementById("contraseña").value;
         var mensaje="Diligencie los siguientes datos:\n";
 
+        const usuariovalido = await api.obtenerLogin({usuario:usuario,contraseña:contraseña})
+        console.log(usuariovalido)
+
         if (usuario === "" || contraseña === "") {
            alert("Completa todos los campos para iniciar sesion");
         } 
 
-        const usuariovalido = await api.obtenerLogin({usuario:usuario,contraseña:contraseña})
-        console.log(usuariovalido)
-
-        if(usuariovalido.data==undefined || usuariovalido.data.nombres != nombres){
+        else if(usuariovalido.data.mensaje){
                 alert(mensaje=mensaje+"-El usuario no se encuentra registrado\n");
             } 
-            // else if (usuariovalido.data.contraseña != contraseña){
-            //   alert(mensaje=mensaje+"-La contraseña es incorrecta\n");
-            // }
-            else{
-              // this.usuario:usuariovalido.data[0].usuario
-              // this.contraseña:usuariovalido.data[0].contraseña
-          alert("Bienvenido a TAM DATABASE")
+        else if(usuariovalido.data.mensaje2){
+                alert(mensaje=mensaje+"-La contraseña es incorrecta\n")
+        }           
+        else{
+              alert("Bienvenido a TAM DATABASE")
         }
       } 
   }       
@@ -365,7 +321,7 @@ body {
   display: inline-block;
   font-size: 15px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 4px 2px;
+  margin: 4px 30px;
   cursor: pointer;
   border-radius: 1em;
 }
@@ -413,12 +369,10 @@ body {
   cursor: pointer;
 }
 
-#br {
-  margin: 1em;
-}
 
 .ubicar {
   text-align: center;
+  margin-top: 40px;
 }
 
 .msje_inicia_sesion h3 {
@@ -472,7 +426,7 @@ Estilo para el checkbox también*/
   opacity: 0;
 }
 
-.modal.container {
+.modal .container {
   position: fixed;
   transition: top 0.35x ease;
   margin-left: 450px;
@@ -540,6 +494,7 @@ p {
 
 .input {
   padding: 0.2em;
+  margin-bottom: 10px;
   font-size: 1em;
   size: 30;
   color: indigo;
