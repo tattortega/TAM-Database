@@ -8,7 +8,54 @@
       </div>
     </div>
     <section id="formulario_iniciar_sesion">
-      <form action="" method="GET">
+      <FormulateForm action="/" class="login-form" v-model="formValues">
+        <div class="msje_inicia_sesion">
+          <h3>INICIAR SESIÓN</h3>
+        </div>
+          <hr />
+          <div class="campo">
+            <FormulateInput
+              type="text"
+              size="30"
+              id="usuario"
+              name="usuario"
+              placeholder="Usuario"
+              class="input"
+              validation="required"
+              v-on:input="usuario = $event.target.value"
+            />
+          </div>
+          <div class="campo">
+            <FormulateInput
+              type="password"
+              size="30"
+              id="contraseña"
+              name="contraseña"
+              placeholder="Contraseña"
+              class="input"
+              validation="required"
+              v-on:input="contraseña = $event.target.value"
+            />
+          </div>
+          <div id="br">
+            <a href="../recuperar_usuario" id="link"
+              >Recuperar usuario y/o contraseña</a>
+          </div>
+          <div class="ubicar">
+            <button id="button" @click="ingresar"><b>Ingresar</b></button>
+            <a id="button2" href="#modal"><label>Regístrate </label></a>
+          </div>
+      </FormulateForm>
+    </section>
+        <!-- <div id="check_div" class="inputs">
+            <FormulateInput
+              v-model="value"
+              type="checkbox"
+              label="Mantener sesion iniciada"
+            />
+        </div> -->
+
+        <!-- <form action="" method="GET">
         <div class="msje_inicia_sesion">
           <h3>INICIAR SESION</h3>
         </div>
@@ -38,31 +85,8 @@
             required
             pattern="[.A-Za-z0-9]+"
           />
-        </div>
+        </div> -->
 
-        <div id="check_div">
-          <!--  <input type="checkbox" id="ch" name="sesión" value="sesion_on">
-                <label id="lbl" for="ch">Mantener la sesión iniciada<br></label> 
-                
-                Acá con el id=ch , estoy indicando que el label de id="lbl" está asociado 
-                al checkbox con id="ch"
-                -->
-          <label class="checkbox">
-            <input type="checkbox" />Mantener sesion iniciada
-            <span class="check"></span>
-          </label>
-        </div>
-        <div id="br">
-          <a href="../recuperar_usuario" id="link"
-            >Recuperar usuario y/o contraseña</a
-          >
-        </div>
-        <div class="ubicar">
-          <button id="button" @click="ingresar"><b>Ingresar</b></button>
-          <a id="button2" href="#modal"><label>Regístrate </label></a>
-        </div>
-      </form>
-    </section>
     <!--Formulario de Registro-->
     <aside id="modal" class="modal">
       <div class="container">
@@ -75,16 +99,12 @@
           <p><strong>Ingrese los siguientes datos para registrarse</strong></p>
         </div>
         <section>
-          <FormulateForm
-              action="/"
-              class="login-form"
-              v-model="formValues"
-            >
+          <FormulateForm action="/" class="login-form" v-model="formValues">
             <div class="formulario">
-              <div class="campo">                
-                <FormulateInput 
+              <div class="campo">
+                <FormulateInput
                   type="text"
-                  size="30"         
+                  size="30"
                   id="nombres"
                   name="nombre"
                   placeholder="Nombre"
@@ -93,9 +113,9 @@
                 />
               </div>
               <div class="campo">
-                <FormulateInput 
+                <FormulateInput
                   type="text"
-                  size="30"         
+                  size="30"
                   id="apellidos"
                   name="apellido"
                   placeholder="Apellido"
@@ -106,7 +126,7 @@
               <div class="campo">
                 <FormulateInput
                   type="email"
-                  size="30"         
+                  size="30"
                   id="correo"
                   name="correo electrónico"
                   placeholder="Correo electrónico"
@@ -117,7 +137,7 @@
               <div class="campo">
                 <FormulateInput
                   type="text"
-                  size="30"         
+                  size="30"
                   id="usuario2"
                   name="usuario"
                   placeholder="Usuario"
@@ -128,7 +148,7 @@
               <div class="campo">
                 <FormulateInput
                   type="password"
-                  size="30"         
+                  size="30"
                   id="contraseña2"
                   name="contraseña"
                   placeholder="Contraseña"
@@ -144,8 +164,8 @@
                   value="Crear cuenta"
                 />
               </div>
-              </div>
-          </FormulateForm>                  
+            </div>
+          </FormulateForm>
         </section>
       </div>
     </aside>
@@ -161,25 +181,14 @@ export default {
   name: "Login",
   data () {
     return {
-      formValues: {}
+      formValues: {},
+      usuario:"",
+      contraseña:""
     }
-  }
-  ,
+  },
   methods: {
-    // async ingresar() {
-    //   try {
-    //     let respuesta = await api.token({
-    //       usuario: this.entrada,
-    //     });
-    //     Auto.createToken(respuesta.data);
-    //     alert(Auto.getToken());
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // },
-
     //API
-    async crear() {
+      async crear() {
         var nombres = document.getElementById("nombres").value;
         var apellidos = document.getElementById("apellidos").value;
         var correo = document.getElementById("correo").value;
@@ -216,7 +225,7 @@ export default {
           
           else if (contraseña.length<5){
             alert(mensaje=mensaje+"-La contraseña debe tener minimo 5 caracteres\n");            
-        } 
+         } 
         
         else{
           await api.crear("Usuario", {
@@ -232,20 +241,43 @@ export default {
 
 
       async ingresar() {
-        var usuario = document.getElementById("usuario").value;
-        var contraseña = document.getElementById("contraseña").value;
+        const usuario = document.getElementById("usuario").value;
+        const contraseña = document.getElementById("contraseña").value;
+        var mensaje="Diligencie los siguientes datos:\n";
+
         if (usuario === "" || contraseña === "") {
-          alert("Completa todos los campos para iniciar sesion");
-        } else {
-          await api.obtenerUno("Usuario", {
-            usuario:usuario,
-            contraseña:contraseña
-          })
-          alert("Bienvenido a TAM DATABASE");
+           alert("Completa todos los campos para iniciar sesion");
+        } 
+
+        const usuariovalido = await api.obtenerLogin({usuario,contraseña})
+        console.log(usuariovalido)
+
+        if(usuariovalido.data[0]==undefined || usuariovalido.data[0].usuario != usuario){
+                alert(mensaje=mensaje+"-El usuario no se encuentra registrado\n");
+            } 
+            else if (usuariovalido.data[0].contraseña != contraseña){
+              alert(mensaje=mensaje+"-La contraseña es incorrecta\n");
+            }
+            else{
+              // this.usuario:usuariovalido.data[0].usuario
+              // this.contraseña:usuariovalido.data[0].contraseña
+          alert("Bienvenido a TAM DATABASE")
         }
-      }
-    }
-  }
+      } 
+  }       
+ }
+
+   // async ingresar() {
+    //   try {
+    //     let respuesta = await api.token({
+    //       usuario: this.entrada,
+    //     });
+    //     Auto.createToken(respuesta.data);
+    //     alert(Auto.getToken());
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // },
 
 </script>
 
@@ -272,6 +304,7 @@ body {
   margin: 1em;
   background-color: rgba(35, 0, 130, 0.178);
 }
+
 #descripcion {
   font-size: 25px;
 }
@@ -292,9 +325,11 @@ body {
   padding: 0.2em;
   text-align: left;
 }
+
 .campos {
   padding-top: 1em;
 }
+
 .inputs {
   padding: 8px;
   font-size: 0.8em;
@@ -303,19 +338,24 @@ body {
   color: indigo;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 #link {
   font-size: 15px;
   color: rgba(35, 0, 130, 0.452);
   font-weight: 500;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 #br a:hover {
   color: rgb(226, 238, 55);
 }
+
 .descripcion {
   text-align: justify;
 }
+
 /*Estilos botones*/
+
 #button {
   background-color: indigo;
   border: 1px indigo solid;
@@ -343,22 +383,28 @@ body {
   cursor: pointer;
   border-radius: 1em;
 }
+
 /*Sombrear el botón principal*/
+
 #button:hover {
   background-color: rgba(35, 0, 130, 0.452);
 }
+
 /*Sombrear el botón principal*/
 #button2:hover {
   background-color: rgba(122, 103, 173, 0.452);
 }
 
 /*Estilo a la palabra del botón principal*/
+
 #button b {
   font-size: 15px;
   color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /*Estilo a la palabra del botón secundario*/
+
 #button2 label {
   font-size: 15px;
   color: white;
@@ -383,9 +429,17 @@ body {
 
 /*Inicio código CSS (Estilo): para que se seleccione el cuadrito de mantener la sesion iniciada
 Estilo para el checkbox también*/
-.checkbox {
-  display: block;
+
+.formulate-input-label {
+  font-size: 0.6em;
+}
+
+.formulate-input-group-item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
+  padding: 0.5em;
   position: relative;
+  display: block;
   padding-left: 20px;
   margin-bottom: 5px;
   cursor: pointer;
@@ -398,63 +452,11 @@ Estilo para el checkbox también*/
   user-select: none;
 }
 
-.checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.check {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 13px;
-  width: 13px;
-  background-color: #eee;
-  border: 1px solid #ccc;
-}
-
-.checkbox:hover input ~ .check {
-  border: 2px solid indigo;
-}
-.checkbox input:checked ~ .check {
-  background-color: indigo;
-  border: none;
-}
-.check::after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.checkbox input:checked ~ .check::after {
-  display: block;
-}
-.checkbox .check::after {
-  left: 3px;
-  top: 0px;
-  width: 3px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
 /*Fin código CSS (Estilo): para que se seleccione el cuadrito de mantener la sesion iniciada
 Estilo para el checkbox también*/
 
-/*
-#ch:hover {
-  border-color: indigo;
-}
-#lbl {
-  font-size: 15px;
-  color:indigo;
-}
-*/
-
 /*Ventana Modal*/
+
 #button2 {
   transition: all 0.15s linear;
 }
@@ -470,7 +472,7 @@ Estilo para el checkbox también*/
   opacity: 0;
 }
 
-.modal .container {
+.modal.container {
   position: fixed;
   transition: top 0.35x ease;
   margin-left: 450px;
@@ -571,10 +573,8 @@ p {
   background-color: rgba(35, 0, 130, 0.452);
 }
 
-.formulate-input-errors{
+.formulate-input-errors {
   padding: 0;
   margin: 0;
 }
-
-
 </style>
