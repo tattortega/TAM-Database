@@ -2,20 +2,20 @@
   <main>
     <div class="desc-search">
       <p>
-        Realice una busqueda por filtros:
+        Realice una búsqueda:
       </p>
     </div>
     <section>
       <form class="search" action="" method="POST">
         <hr/>
         <div class="categoria">
-          <div>
+          <div class="cat">
             <label class="categ" for="search">
               Información Taxonómica del Parásito:
             </label>
           </div>
           <div>
-            Género<br>
+            Género del parásito:<br>
             <select v-model="genero" name="genero" id="genero" required>
               <option value="Todo">Todo</option>
               <option value="Haemoproteus">Haemoproteus</option>
@@ -159,11 +159,15 @@ import Tabla from "@/components/Tabla.vue"
   display: flex;
   flex-direction: row;
   padding: 1em;
+  padding-top: 0;
   padding-left: 2em}
 .categoria {
   padding-left: 1em;
   padding-right: 1em;
   width: 500px}
+.cat{
+  padding-bottom: 1em;
+}
 .categ {
   font-weight: bold}
 hr {
@@ -180,6 +184,7 @@ table {
   border-collapse: collapse;
   border-color: indigo;
   margin: 2em;
+  margin-bottom: 5em;
   margin-top: 0;
   padding: 1em;
   text-align: center}
