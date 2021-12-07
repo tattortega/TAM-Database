@@ -4,7 +4,7 @@
   "description": "Base de Datos online de malaria aviar Tropical",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server --progress",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "repository": {
