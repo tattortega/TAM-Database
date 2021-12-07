@@ -4,9 +4,9 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { response } = require('express')
 
-usuarioCtrl.home = (require,response)=>{
-    response.json({
-        API: "Bienvenido"
+usuarioCtrl.home = (req,res)=>{
+    res.json({
+        API: "Bienvenido a TAM Database"
     })
 }
 

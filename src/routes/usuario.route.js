@@ -4,7 +4,6 @@ const UsuarioCtrl= require('../controller/usuario.controller')
 const Auto = require('../helper/Auto')
 
 router.get('/', UsuarioCtrl.home)
-
 router.post('/Usuario', UsuarioCtrl.crear)
 router.post('/login', UsuarioCtrl.login)
 router.get('/Usuarios', UsuarioCtrl.listar)
