@@ -2,6 +2,17 @@ const usuarioCtrl={}
 const Usuario = require('../models/usuario.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const { response } = require('express')
+
+usuarioCtrl.home = (require,response)=>{
+    response.json({
+        API: "Bienvenido"
+    })
+}
+
+
+
+
 
 //Crear usuario
 usuarioCtrl.crear = async(req,res)=>{
