@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router()
-const UsuarioCtrl= require('../controller/usuario.controller')
+const UsuarioCtrl= require('../controller/Usuario.controller')
 const Auto = require('../helper/Auto')
 
 router.get('/', UsuarioCtrl.home)
