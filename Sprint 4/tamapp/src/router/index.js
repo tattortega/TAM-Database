@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Contactar_soporte from "../views/Contactar_soporte.vue"
+import Consultas from "../views/Consultas.vue";
 
 Vue.use(VueRouter);
 
@@ -13,10 +14,16 @@ const routes = [
   },
 
   {
-    path: "/contactarsoporte",
+    path: "/Contactanos",
     name: "Contactar_soporte",
     component: Contactar_soporte,
   },
+
+  {
+    path: "/Consultas",
+    name: "Consultas",
+    component: Consultas,
+  }
 
 ];
 
