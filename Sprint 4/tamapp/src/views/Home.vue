@@ -5,10 +5,11 @@
 <script>
 import Login from "./Login.vue";
 
+
 export default {
   name: "Home",
   components: {
-    Login,
-  },
+    Login
+  }
 };
 </script>

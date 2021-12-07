@@ -6,7 +6,7 @@ let soporteSchema = new Schema({
     identificacion: {type:String, required:[true, 'Campo obligatorio']},
     correo: {type:String, required:[true, 'Campo obligatorio']},
     descripcion: {type:String, required:[true, 'Campo obligatorio']},
-    creado_el: {type: Date, default: Date.now}
+    creado_el: {type: Date, default: Date}
 });
 
 const Soporte = mongoose.model('soporte',soporteSchema);
