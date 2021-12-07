@@ -1,9 +1,11 @@
 <template>
   <div class="main">
+    <NavBarLogout/>
     <section class="section">
       <div>
             <h3>ENVIA TU SOLICITUD</h3>
       </div>
+      <hr>
       <FormulateForm
               class="login-form"
               v-model="formValues"
@@ -56,7 +58,7 @@
                   validation="required"
                 />
               </div>
-              <div class="campo">
+              <div class="boton">
                 <FormulateInput
                 type="submit"
                 label="Enviar solicitud"
@@ -71,11 +73,11 @@
 </template>
 
 <script>
-
+import NavBarLogout from '../components/NavBarLogout.vue';
 import api from "../logic/api";//Cada 2 puntos retrocede una carpeta.
-
-  
+ 
 export default {
+  components: { NavBarLogout },
   data () {
     return {
       formValues: {}
@@ -141,9 +143,12 @@ export default {
 
 .campo {
   padding-top: 0.1em;
-  text-align: center;
 }
 
+.boton{
+    padding-left: 120px;
+    padding-top: 1em;
+}
   button{
     height: 45px; 
     padding-top: -150px; 

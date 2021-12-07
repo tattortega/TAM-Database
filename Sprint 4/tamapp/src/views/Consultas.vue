@@ -1,5 +1,6 @@
 <template>
   <main>
+    <NavBarLogin/>
     <div class="desc-search">
       <p>
         Realice una búsqueda:
@@ -99,9 +100,11 @@
 // @ is an alias to /src
 import api from "@/logic/api"
 import Tabla from "@/components/Tabla.vue"
+import NavBarLogin from '../components/NavBarLogin.vue'
   export default {
     components: {
-      Tabla
+        Tabla,
+        NavBarLogin
     },
     data:function(){
       return {

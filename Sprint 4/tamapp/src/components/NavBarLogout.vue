@@ -1,28 +1,17 @@
 <template>
-    <nav class="MenuWrap">
-        <div class="menu-item" v-if="logueado">
-            <router-link to="/Home">Cerrar sesión</router-link>
-        </div>
+    <nav class="MenuWrap">  
         <div class="menu-item">
             <router-link class="ListItem" to="/Contactanos">Contáctanos</router-link>
         </div>
         <div class="menu-item">
-            <router-link class="ListItem" to="/Consultas">Consultas</router-link>
-        </div>
-        <div class="menu-item" v-if="logueado">
-            <router-link to="/IngresarDatosBiologicos">Ingresa tus datos</router-link>
-        </div>        
+            <router-link class="ListItem" to="/">Inicio</router-link>
+        </div>      
     </nav>
 </template>
 
 <script>
 export default {
-  name:"NavBarLogout",
- data: function(){
-   return{
-     logueado:false
-   }
- }
+  name:"NavBarLogout"
 }
 </script>
 

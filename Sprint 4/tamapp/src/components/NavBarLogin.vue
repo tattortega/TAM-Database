@@ -1,10 +1,7 @@
 <template>
     <nav class="MenuWrap">
         <div class="menu-item">
-            <router-link class="ListItem" to="/Home">Cerrar sesión</router-link>
-        </div>
-        <div class="menu-item">
-            <router-link class="ListItem" to="/Contactanos">Contáctanos</router-link>
+            <router-link class="ListItem" to="/">Cerrar sesión</router-link>
         </div>
         <div class="menu-item">
             <router-link class="ListItem" to="/Consultas">Consultas</router-link>
