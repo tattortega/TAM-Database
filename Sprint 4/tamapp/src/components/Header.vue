@@ -39,8 +39,6 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.6em;
 }
 
 .titulo img {
@@ -48,7 +46,7 @@ body {
 }
 
 .subtitulo {
-  margin-top: -80px;
+  margin-top: -60px;
   color: #ebebeb;
   font-size: 1rem;
   font-weight: 600;

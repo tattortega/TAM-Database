@@ -4,10 +4,9 @@ const DatosBiologicos = require('../models/datosBiologicos.model.js')
 
 DatosBiologicosCtrl.crear = async(req,res)=>{
     try {
-        const {key_usuario,latitud,longitud,localidad,elevacion,codigo_genbank,marcador_molecular,orden,especie,familia,genero_parasito,bibliographic_ref,id_pais} = req.body
+        const {latitud,longitud,localidad,elevacion,codigo_genbank,marcador_molecular,orden,especie,familia,genero_parasito,bibliographic_ref,pais} = req.body
 
         const NuevosDatosBiologicos = new DatosBiologicos({
-            key_usuario,
             latitud,
             longitud,
             localidad,
@@ -19,7 +18,7 @@ DatosBiologicosCtrl.crear = async(req,res)=>{
             familia,
             genero_parasito,
             bibliographic_ref,
-            id_pais
+            pais
         })     
         await NuevosDatosBiologicos.save()
         res.json({
@@ -245,8 +244,8 @@ DatosBiologicosCtrl.buscarFamilia= async(req,res)=>{
 //Consultar por pais
 DatosBiologicosCtrl.buscarPais= async(req,res)=>{
     try {
-        const id_pais= req.params.id_pais;
-        const respuesta = await DatosBiologicos.find({id_pais:id_pais})
+        const pais= req.params.pais;
+        const respuesta = await DatosBiologicos.find({pais:pais})
         if(respuesta==''){
             res.json({
                 mensaje: 'La busqueda no se encuentra en la base de datos'

@@ -1,4 +1,5 @@
 <template>
+<div><NavBarLogout/>  
   <main class="iniciar_sesion">
     <div id="parrafo_descripcion">
       <div id="descripcion">
@@ -127,15 +128,19 @@
       </div>
     </aside>
   </main>
+</div>
 </template>
 
 <script>
-
-import api from "@/logic/Api.js"; 
+import NavBarLogout from "@/components/NavBarLogout.vue";
+import api from "@/logic/api.js"; 
 import Auto from "@/logic/Autenticacion.js";
 
 export default {
   name: "Login",
+  components: {
+    NavBarLogout
+  },
   data: function () {
     return {
       formValues: {},
@@ -219,7 +224,7 @@ export default {
         }           
         else{
               alert("Bienvenido a TAM DATABASE")
-              // window.location = "http://localhost:8080/IngresoDatosBiologicos"
+              window.location = "http://localhost:8080/IngresarDatosBiologicos"
                 Auto.createToken(usuariovalido.data.token)
                 this.tk = Auto.getToken();
                 console.log(Auto.getToken())
@@ -246,9 +251,11 @@ export default {
 
 body {
   background: linear-gradient(to bottom right, #69af9d83, #fffffd8c);
-
 }
 
+hr {
+  margin: 1em;
+}
 .iniciar_sesion {
   display: flex;
   flex-direction: column; /*Mostrar el diseño sin esto*/
@@ -291,7 +298,7 @@ body {
   padding-top: 1em;
 }
 
-.inputs {
+.input {
   padding: 8px;
   font-size: 0.8em;
   font-weight: 500;
@@ -299,7 +306,15 @@ body {
   color: indigo;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.input {
+  padding: 0.1em;
+  margin-bottom: 10px;
+  margin-top: 0.5em;
+  font-size: 1em;
+  size: 30;
+  color: indigo;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 #link {
   font-size: 15px;
   color: rgba(35, 0, 130, 0.452);
@@ -329,6 +344,8 @@ body {
   margin: 4px 30px;
   cursor: pointer;
   border-radius: 1em;
+  width: 150px;
+  height: 52px;
 }
 
 #button2 {
@@ -497,14 +514,7 @@ p {
   padding: 10px;
 }
 
-.input {
-  padding: 0.1em;
-  margin-bottom: 10px;
-  font-size: 1em;
-  size: 30;
-  color: indigo;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
+
 .formulate-input-error {
   font-size: 0.8em;
 }
