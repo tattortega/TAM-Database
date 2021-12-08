@@ -132,15 +132,16 @@
 <script>
 
 import api from "@/logic/Api.js"; 
-// import Auto from "@/logic/Autenticacion.js";
+import Auto from "@/logic/Autenticacion.js";
 
 export default {
   name: "Login",
-  data () {
+  data: function () {
     return {
       formValues: {},
       usuario:"",
-      contraseña:""
+      contraseña:"",
+      tk: Auto.getToken()
     }
   },
   methods: {
@@ -218,7 +219,10 @@ export default {
         }           
         else{
               alert("Bienvenido a TAM DATABASE")
-              window.location = "http://localhost:8080/IngresoDatosBiologicos"
+              // window.location = "http://localhost:8080/IngresoDatosBiologicos"
+                Auto.createToken(usuariovalido.data.token)
+                this.tk = Auto.getToken();
+                console.log(Auto.getToken())
         }
       } 
   }       
