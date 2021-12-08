@@ -97,7 +97,7 @@
                   type="text"
                   size="30"
                   id="usuario2"
-                  name="usuario"
+                  name="usuario "
                   placeholder="Usuario"
                   class="input"
                   validation="required"
@@ -108,7 +108,7 @@
                   type="password"
                   size="30"
                   id="contraseña2"
-                  name="contraseña"
+                  name="contraseña "
                   placeholder="Contraseña"
                   class="input"
                   validation="required"
@@ -146,7 +146,6 @@ export default {
       formValues: {},
       usuario:"",
       contraseña:"",
-      tk: Auto.getToken()
     }
   },
   methods: {
@@ -158,6 +157,9 @@ export default {
         var usuario = document.getElementById("usuario2").value;
         var contraseña = document.getElementById("contraseña2").value;
 
+        if (nombres === ""|| apellidos === "" || correo === "" || usuario === "" || contraseña === "") {
+           alert("Completa todos los campos para iniciar sesion");
+        } 
         const correorepetido = await api.obtenerCorreo(correo)
         console.log(correorepetido)
         
@@ -166,7 +168,7 @@ export default {
 
         var mensaje="Diligencie los siguientes datos:\n";
 
-          if (nombres.length<3 || nombres===""){
+          if (nombres.length<3){
             alert(mensaje=mensaje+"-Los nombres deben tener minimo 3 caracteres\n");
           }
 
@@ -209,25 +211,30 @@ export default {
         const contraseña = document.getElementById("contraseña").value;
         var mensaje="Diligencie los siguientes datos:\n";
 
-        const usuariovalido = await api.obtenerLogin({usuario:usuario,contraseña:contraseña})
-        console.log(usuariovalido)
-
         if (usuario === "" || contraseña === "") {
            alert("Completa todos los campos para iniciar sesion");
         } 
 
-        else if(usuariovalido.data.mensaje){
-                alert(mensaje=mensaje+"-El usuario no se encuentra registrado\n");
-            } 
-        else if(usuariovalido.data.mensaje2){
-                alert(mensaje=mensaje+"-La contraseña es incorrecta\n")
-        }           
+          
         else{
-              alert("Bienvenido a TAM DATABASE")
-              window.location = "http://localhost:8080/IngresarDatosBiologicos"
+                try {
+                const usuariovalido = await api.obtenerLogin({usuario:usuario,contraseña:contraseña})
+                console.log(usuariovalido)
+                if(usuariovalido.data.mensaje){
+                    alert(mensaje=mensaje+"-El usuario no se encuentra registrado\n");
+                    } 
+                else if(usuariovalido.data.mensaje2){
+                    alert(mensaje=mensaje+"-La contraseña es incorrecta\n")
+                }                 
+                else{
                 Auto.createToken(usuariovalido.data.token)
-                this.tk = Auto.getToken();
                 console.log(Auto.getToken())
+                alert("Bienvenido a TAM DATABASE")
+                window.location = "http://localhost:8080/IngresarDatosBiologicos"
+                }
+                } catch (error) {
+                  console.log(error)
+                } 
         }
       } 
   }       

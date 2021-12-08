@@ -92,12 +92,12 @@ export default {
       const descripción = document.getElementById('desc').value;
       const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
       
-      if(nombre === '' || doc_identidad === '' || descripción === ''){
+      if(nombre === '' || doc_identidad === '' || email === ''|| descripción === ''){
         alert("Los campos no pueden estar vacíos. Por favor digitelos completamente para enviar su solicitud.")
 
       }
       
-      if (!emailRegex.test(email)) {
+      else if (!emailRegex.test(email)) {
         alert("Por favor introduzca un correo electrónico válido.")
       }   
       else{

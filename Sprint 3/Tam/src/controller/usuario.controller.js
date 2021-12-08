@@ -53,7 +53,7 @@ usuarioCtrl.login = async(req,res)=>{
         const validarUsuario = await Usuario.findOne({usuario:usuario})
         if(!validarUsuario){
             return res.json({
-                mensaje:'Usuario incorrecto'
+                mensaje2:'Usuario incorrecto'
             })
         }
         

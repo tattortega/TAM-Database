@@ -1,6 +1,9 @@
 <template>
   <main>
     <NavBarLogin/>
+    <Alert texto="Inicie sesion" v-if="!render"/>
+    <div v-if="render">
+    <div>
     <div class="desc-search">
       <p>
         Realice una búsqueda:
@@ -93,6 +96,8 @@
         <button id="boton-download">Descargar informes</button>
       </div> -->
     </section>
+</div>
+</div>
   </main>
 </template>
 
@@ -100,19 +105,31 @@
 // @ is an alias to /src
 import api from "@/logic/api"
 import Tabla from "@/components/Tabla.vue"
+import Alert from "@/components/Alert.vue"
 import NavBarLogin from '../components/NavBarLogin.vue'
+import Auto from "@/logic/Autenticacion.js"
+
   export default {
     components: {
         Tabla,
-        NavBarLogin
+        NavBarLogin,
+        Alert
     },
     data:function(){
       return {
         info:[],
+        render:false,
       }
     },
     methods: {
-        async buscar(){
+      async buscarInfo(){
+          // const resultado= await api.obtenerTodo("DatosBiologicos")
+          if(Auto.getToken()){
+          this.info=Tabla
+          this.render=true
+          }
+      },
+      async buscar(){
           const opc=document.getElementById('genero').value
           console.log('El valor es: ',opc)
           var resultado=""
@@ -122,16 +139,13 @@ import NavBarLogin from '../components/NavBarLogin.vue'
           }else{
             resultado= await api.obtenerParasitoGenero(opc)
           }
-          this.info=resultado.data
-
-          // if(resultado.data.mensaje){
-          //   alert(resultado.data.mensaje)  
-          // }else{
-          //   alert(resultado.data)  
-          // }
-          // console.log(resultado)
-        }
-    }
+          this.info = resultado.data
+          }
+        },
+    
+  created(){
+    this.buscarInfo();    
+  }
   }
 </script>
 

@@ -23,7 +23,6 @@ app.set('Port', process.env.PORT || 4000)
 app.use(morgan('dev'))
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
-// app.use(cors({origen:'*'}))
 
 app.use(require('./routes/usuario.route'))
 app.use(require('./routes/soporte.route'))

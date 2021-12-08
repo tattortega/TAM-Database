@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const router = Router()
+const Auto = require('../helper/Auto')
 const DatosBiologicosCtrl = require('../controller/datosBiologicos.controller.js')
 
 router.get('/DatosBiologicos',DatosBiologicosCtrl.buscar_todos)
@@ -17,7 +18,7 @@ router.get('/DatosBiologicos/especie/:especie',DatosBiologicosCtrl.buscarEspecie
 router.get('/DatosBiologicos/familia/:familia',DatosBiologicosCtrl.buscarFamilia)
 router.get('/DatosBiologicos/id_pais/:id_pais',DatosBiologicosCtrl.buscarPais)
 router.get('/DatosBiologicos/bibliographic_ref/:bibliographic_ref',DatosBiologicosCtrl.buscarRefBiblio)
-router.post('/DatosBiologicos',DatosBiologicosCtrl.crear)
+router.post('/DatosBiologicos', DatosBiologicosCtrl.crear)
 router.put('/DatosBiologicos/:id',DatosBiologicosCtrl.actualizar)
 router.delete('/DatosBiologicos/:id',DatosBiologicosCtrl.eliminar)
 
