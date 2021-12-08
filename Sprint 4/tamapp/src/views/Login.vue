@@ -156,6 +156,7 @@ export default {
         var correo = document.getElementById("correo").value;
         var usuario = document.getElementById("usuario2").value;
         var contraseña = document.getElementById("contraseña2").value;
+        const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
 
         if (nombres === ""|| apellidos === "" || correo === "" || usuario === "" || contraseña === "") {
            alert("Completa todos los campos para iniciar sesion");
@@ -179,7 +180,9 @@ export default {
           else if(correorepetido.data[0]!=undefined && correorepetido.data[0].correo == correo){
                 alert(mensaje=mensaje+"-Este correo ya ha sido registrado\n");
             }
-
+          else if (!emailRegex.test(correo)) {
+            alert("Por favor introduzca un correo electrónico válido.")
+          }
           else if (usuario.length<5){
             alert(mensaje=mensaje+"-El usuario debe tener minimo 5 caracteres\n");
           }
@@ -239,18 +242,6 @@ export default {
       } 
   }       
  }
-
-   // async ingresar() {
-    //   try {
-    //     let respuesta = await api.token({
-    //       usuario: this.entrada,
-    //     });
-    //     Auto.createToken(respuesta.data);
-    //     alert(Auto.getToken());
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // }, 
 
 </script>
 
