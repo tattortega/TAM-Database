@@ -2,6 +2,7 @@ const usuarioCtrl={}
 const Usuario = require('../models/usuario.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const {res} = require('express')
 
 //Ruta de inicio
 usuarioCtrl.home = (res,res)=>{
