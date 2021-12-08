@@ -3,6 +3,13 @@ const Usuario = require('../models/usuario.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+//Ruta de inicio
+usuarioCtrl.home = (res,res)=>{
+    res.json({
+        API: "Bienvenido a TAM Database"
+    })
+}
+
 //Crear usuario
 usuarioCtrl.crear = async(req,res)=>{
         try {
