@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 
-const API = "http://localhost:4000";
+const API = "https://tam-database.herokuapp.com/";
 
 
 
