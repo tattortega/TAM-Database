@@ -308,8 +308,7 @@ hr {
 }
 .input {
   padding: 0.1em;
-  margin-bottom: 10px;
-  margin-top: 0.5em;
+  margin-top: 0.4em;
   font-size: 1em;
   size: 30;
   color: indigo;
