@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const {res} = require('express')
 
 //Ruta de inicio
-usuarioCtrl.home = (res,res)=>{
+usuarioCtrl.home = (req,res)=>{
     res.json({
         API: "Bienvenido a TAM Database"
     })
