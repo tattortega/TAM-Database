@@ -133,7 +133,7 @@
 
 <script>
 import NavBarLogout from "@/components/NavBarLogout.vue";
-import api from "@/logic/api.js"; 
+import api from "@/logic/Api.js"; 
 import Auto from "@/logic/Autenticacion.js";
 
 export default {

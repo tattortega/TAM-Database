@@ -74,7 +74,7 @@
 
 <script>
 import NavBarLogout from '../components/NavBarLogout.vue';
-import api from "../logic/api";//Cada 2 puntos retrocede una carpeta.
+import api from "@/logic/Api.js";//Cada 2 puntos retrocede una carpeta.
  
 export default {
   components: { NavBarLogout },

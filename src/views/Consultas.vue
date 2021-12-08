@@ -103,7 +103,7 @@
 
 <script>
 // @ is an alias to /src
-import api from "@/logic/api"
+import api from "@/logic/Api.js"
 import Tabla from "@/components/Tabla.vue"
 import Alert from "@/components/Alert.vue"
 import NavBarLogin from '../components/NavBarLogin.vue'

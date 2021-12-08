@@ -348,7 +348,7 @@
 
 <script>
 import Alert from "@/components/Alert.vue"
-import api from "../logic/api";
+import api from "@/logic/Api.js";
 import NavBarLogin from "@/components/NavBarLogin.vue";
 import Auto from "@/logic/Autenticacion.js"
 
