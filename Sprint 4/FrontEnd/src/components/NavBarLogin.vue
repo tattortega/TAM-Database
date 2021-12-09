@@ -1,6 +1,6 @@
 <template>
     <nav class="MenuWrap">
-        <div class="menu-item">
+        <div class="menu-item" v-if="logueado" @click="cerrarsesion">
             <router-link class="ListItem" to="/">Cerrar sesión</router-link>
         </div>
         <div class="menu-item">
@@ -13,12 +13,20 @@
 </template>
 
 <script>
+import Auto from "@/logic/Autenticacion.js"
 export default {
   name:"NavBarLogin",
  data: function(){
    return{
+     logueado: Auto.isToken()
    }
- }
+ },
+   methods:{
+    cerrarsesion(){
+      Auto.limpiar();
+      this.logueado = Auto.isToken();
+    }
+  }
 }
 </script>
 

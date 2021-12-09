@@ -2,7 +2,7 @@
     <tr>
         <td>{{latitud}}</td>
         <td>{{longitud}}</td>
-        <td>{{id_pais}}</td>
+        <td>{{pais}}</td>
         <td>{{localidad}}</td>
         <td>{{elevacion}}</td>
         <td>{{codigo_genbank}}</td>
@@ -20,7 +20,7 @@ name:"Tabla",
 props:{
     latitud: Number,
     longitud: Number,
-    id_pais: Number,
+    pais: String,
     localidad: String,
     genero_parasito: String,
     bibliographic_ref: String,

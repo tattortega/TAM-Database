@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   "dependencies": {
     "@braid/vue-formulate": "^2.5.2",
@@ -28,12 +28,5 @@
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^2.2.1",
     "vue-template-compiler": "^2.6.11"
-  },
-  "description": "```\r npm install\r ```",
-  "main": ".eslintrc.js",
-  "directories": {
-    "test": "tests"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }

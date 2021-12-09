@@ -5,7 +5,6 @@ import Contactar_soporte from "../views/Contactar_soporte.vue"
 import Consultas from "../views/Consultas.vue";
 import IngresarDatosBiologicos from "../views/IngresarDatosBiologicos.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -14,7 +13,6 @@ const routes = [
     name: "Login",
     component: Login,
   },
-
   {
     path: "/Contactanos",
     name: "Contactar_soporte",
@@ -32,7 +30,6 @@ const routes = [
     name: "IngresarDatosBiologicos",
     component: IngresarDatosBiologicos,
   }
-
 ];
 
 const router = new VueRouter({

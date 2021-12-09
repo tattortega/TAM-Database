@@ -1,6 +1,9 @@
 <template >
       <main>
           <NavBarLogin/>
+           <Alert texto="Inicie sesion" v-if="!render"/>
+    <div v-if="render">
+        <div>
             <p class="parrafo">
                 A continuación usted podrá ingresar los datos biologicos para
                 registrarlos en la base de datos.
@@ -338,21 +341,37 @@
             </div>                        
         </div>
     </form>
-
+    </div>
+</div>
 </main>
 </template>
 
 <script>
-
+import Alert from "@/components/Alert.vue"
 import api from "../logic/api";
 import NavBarLogin from "@/components/NavBarLogin.vue";
+import Auto from "@/logic/Autenticacion.js"
 
 export default {
     name:"IngresarDatosBiologicos", 
     components:{
         NavBarLogin,
+        Alert
+    },
+    
+    data:function(){
+    return{
+      info:[],
+      render:false     
+    }
     },
     methods:{
+          async buscarInfo(){
+          if(Auto.getToken()){
+        //   this.info=Tabla
+          this.render=true
+          }
+      },
         async ingresar(){
             const latitud = document.getElementById('latitud').value;
             const longitud = document.getElementById('longitud').value;
@@ -384,17 +403,21 @@ export default {
                 genero_parasito:genero_parasito,
                 codigo_genbank:codigo_genbank,
                 marcador_molecular:marcador_molecular,
-                bibliographic_ref:bibliographic_ref
+                bibliographic_ref:bibliographic_ref,
+                token: Auto.getToken()
             })
                 alert("Registro de datos biológicos exitoso");              
             }
         }
-    }
+    },
+    created(){
+    this.buscarInfo();    
+  }
     
 }
 </script>
 
-<style>
+<style scoped>
 input[type=number]{
     width: 20.2em;
 }
@@ -487,11 +510,10 @@ h3{
   border-radius: 1em;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
   margin:4px 2px;
   cursor:pointer;
+  height: 50px;
   width: 190px;
 }
 
