@@ -117,8 +117,9 @@ import Auto from "@/logic/Autenticacion.js"
     },
     data:function(){
       return {
-        info:[],
-        render:false,
+        info:[], // Es un vector vacio que almacena la tabla de los datos de consultas.
+        render:false, /* Render es una variable que se declara y se usa en la condicional en el html para
+        mostrar la vista en la que estamos. */
       }
     },
     methods: {
@@ -139,7 +140,7 @@ import Auto from "@/logic/Autenticacion.js"
           }else{
             resultado= await api.obtenerParasitoGenero(opc)
           }
-          this.info = resultado.data
+          this.info = resultado.data //Data es como decir la información del Array.
           }
         },
     

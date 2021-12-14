@@ -62,7 +62,7 @@
                 <FormulateInput
                 type="submit"
                 label="Enviar solicitud"
-                data-ghost
+                data-ghost 
                 @click="contactar"
               />
               </div>
