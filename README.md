@@ -1,1 +1,1 @@
-Proyecto desarrollado en el diplomado del Ministerio de las TIC de Colombia.
+Proyecto desarrollado en el diplomado brindado por el Ministerio de las TIC de Colombia.
